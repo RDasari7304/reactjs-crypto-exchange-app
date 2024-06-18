@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.balance-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.balance-amount{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+}
+
+.button-border{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    border-width: 1px;
+    border-radius: 5px;
+}
