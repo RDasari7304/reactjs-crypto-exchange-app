@@ -11,9 +11,23 @@
     font-size: 20px;
 }
 
-.balance-amount{
+.show-balance{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 35px;
+    font-size: 40px;
+}
+
+.hide-balance{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.show-balance-dollar{
+    font-size:25px;
+}
+
+.hide-balance-dollar{
+    font-size: 50px;
+    font-weight: 600;
 }
 
 .button-border{
