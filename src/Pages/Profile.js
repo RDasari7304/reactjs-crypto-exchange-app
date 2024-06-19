@@ -12,7 +12,7 @@ export default function Profile(){
     }
 
     return(
-        <div>
+        <div className="p-10">
             <Balance data={data}/>
         </div>
     );

@@ -2,8 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-.balance-card{
+.navbar-title{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0px 5px;
+    font-size: 15px;
+}
+
+.vertical-divider{
+    height: 50px; /* Adjust the height as needed */
+    width: 1px; /* Adjust the width as needed */
+    background-color: slategrey; /* Adjust the color as needed */
+    opacity: 0.5;
+    display: inline-block;
+}
+
+.buy-crypto-button{
+    color: #1E2026;
+    background-color: #F0B90B;
+    padding: 0px 15px;
     border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.buy-crypto-button:hover{
+    background-color: rgba(240,185,11, 0.85);
+}
+
+.trade-crypto-button:hover{
+    border-color: #F0B90B;
+}
+
+.balance-card{
+    border-radius: 8px;
 }
 
 .balance-title{
