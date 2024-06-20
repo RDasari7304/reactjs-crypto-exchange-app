@@ -1,9 +1,10 @@
 import ToggleEye from './ToggleEye.js';
 import Graph from './Graph.js';
 import { useState } from 'react';
+import BalanceSector from './BalanceSector.js';
 
 export default function Balance({data}){
-    const [showBalance, setShowBalance] = useState(false);
+    const [showBalance, setShowBalance] = useState(true);
 
     return(
         <div className="bg-white w-full max-w-7xl p-6 ml-auto mr-auto balance-card">
@@ -32,6 +33,10 @@ export default function Balance({data}){
                 </div>
             </div>
             <Graph data={data}/>
+            <div className='flex justify-center items-center w-full'>
+                <BalanceSector />
+                <BalanceSector />
+            </div>
         </div>
     );
 }

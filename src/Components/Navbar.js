@@ -65,7 +65,7 @@ import {
                         ))}
                     </div>
                   </div>
-                  <div className="flex flex-1  ml-auto"> 
+                  <div className="flex flex-1 pt-1 pb-1 ml-auto"> 
                         <button className='buy-crypto-button text-md ml-auto mr-6'> Buy Crypto </button>
                         <button className='trade-crypto-button text-md button-border' style={{'color': '#1E2026', 'padding': '0px 30px', 'border-radius': '5px', 'font-size': '14px', 'font-family': 'Arial, sans-serif', 'font-weight': '600'}}> 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

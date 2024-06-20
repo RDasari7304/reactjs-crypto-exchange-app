@@ -68,6 +68,11 @@
     border-radius: 5px;
 }
 
+.balance-sector-card{
+    border-width: 1px;
+    border-radius: 4px;
+}
+
 .tooltip {
     opacity: 0.8;
     background-color: #FFFFFF; /* Dark background color */
