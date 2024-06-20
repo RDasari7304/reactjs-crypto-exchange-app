@@ -1,4 +1,5 @@
-import Balance from "../Components/Balance";
+import Balance from "../Components/PortfolioPage/BalanceComponent/Balance";
+import ActionSection from "../Components/PortfolioPage/ActionsComponent/ActionSection";
 import { subDays } from 'date-fns';
 
 export default function Profile(){
@@ -14,6 +15,7 @@ export default function Profile(){
     return(
         <div className="p-10">
             <Balance data={data}/>
+            <ActionSection />
         </div>
     );
 }

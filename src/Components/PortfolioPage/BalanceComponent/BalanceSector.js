@@ -1,7 +1,7 @@
-import apecoin from '../Images/apecoin.png';
-import rndr from '../Images/rndr.png';
-import filecoin from '../Images/filecoin.png';
-import bitcoin from '../Images/bitcoin.png';
+import apecoin from '../../../Images/PortfolioPage/CryptoLogos/apecoin.png';
+import rndr from '../../../Images/PortfolioPage/CryptoLogos/rndr.png';
+import filecoin from '../../../Images/PortfolioPage/CryptoLogos/filecoin.png';
+import bitcoin from '../../../Images/PortfolioPage/CryptoLogos/bitcoin.png';
 
 export default function BalanceSector(){
     return (
@@ -11,7 +11,7 @@ export default function BalanceSector(){
                 <span className= 'mt-1' style= {{'font-family': 'Arial, sans-serif', 'font-size': '32px'}}>$13,574.95</span>
             </div>
             
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center cursor-pointer">
                 <img src={apecoin} alt="React Image" className='max-w-10 max-h-10 mr-1'/>
                 <img src={rndr} alt="React Image" className='max-w-11 max-h-11 mr-1'/>
                 <img src={filecoin} alt="React Image" className='max-w-10 max-h-10 mr-1'/>
