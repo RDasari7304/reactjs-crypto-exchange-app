@@ -1,7 +1,8 @@
 import Balance from "../Components/PortfolioPage/BalanceComponent/Balance";
 import ActionSection from "../Components/PortfolioPage/ActionsComponent/ActionSection";
 import { subDays } from 'date-fns';
-import Browser from "../Components/PortfolioPage/Browser";
+import Browser from "../Components/PortfolioPage/BrowerComponents/Browser";
+import Tabs from "../Components/PortfolioPage/BrowerComponents/TableComponents/Tabs";
 
 export default function Profile(){
     const data = []
