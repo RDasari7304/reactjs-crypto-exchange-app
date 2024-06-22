@@ -9,7 +9,6 @@ export default function Graph({data}){
         return result;
     });
 
-    console.log(filteredData);
 
     return (
         <ResponsiveContainer width="100%" height= {300}>
@@ -24,7 +23,6 @@ export default function Graph({data}){
 
                 <Area dataKey="value" stroke="#F0B90B" fill="url(#gridGradient)"/>
                 <XAxis dataKey="date" axisLine= {false} tickLine= {false} padding={{left: 30, right: 30}} tickMargin={10} tickFormatter= {(dateStr) => {
-                    console.log(dateStr);
                     const date = parseISO(dateStr);
                     return format(date, "MMM d");
                 }}/>

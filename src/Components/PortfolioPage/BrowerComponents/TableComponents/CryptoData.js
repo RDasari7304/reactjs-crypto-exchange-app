@@ -14,11 +14,11 @@ export default function CryptoData({crypto, logoSrc, pair, price, change, volume
 
                     </div>
                 </td>
-                <td className="border-t border-b p-4 font-medium">$ {price}</td>
+                <td className="border-t border-b p-4 font-medium">$ {Number(price).toLocaleString('en')}</td>
                 <td className="border-t border-b p-4 ">
-                    <button className="px-2 py-1" style={{'background-color': '#fef2f1', 'font-size': '16px', 'border-radius': '40%', 'color': '#F84960'}}> {change}% </button>
+                    <button className="px-2 py-1" style={{'backgroundColor': '#fef2f1', 'fontSize': '16px', 'borderRadius': '40%', 'color': '#F84960'}}> {change}% </button>
                 </td>
-                <td className="border-t border-b p-4">{volume}</td>
+                <td className="border-t border-b p-4">{Number(volume).toLocaleString('en')}</td>
         </tr>
     );
 }

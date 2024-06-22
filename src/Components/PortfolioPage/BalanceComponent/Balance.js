@@ -7,7 +7,7 @@ export default function Balance({data}){
     const [showBalance, setShowBalance] = useState(true);
 
     return(
-        <div className="bg-white w-full max-w-6xl p-6 ml-auto mr-auto portfolio-cards">
+        <div className="bg-white w-full p-6 ml-auto mr-auto portfolio-cards">
             <div>
                 <div className='flex p-4'>
                     <div className='flex flex-col'>

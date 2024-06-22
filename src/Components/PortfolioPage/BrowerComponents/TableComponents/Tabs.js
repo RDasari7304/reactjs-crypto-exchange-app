@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import BrowserTable from "../BrowserTable";
 
-export default function Tabs(){
+export default function Tabs({customs}){
     const [activeTab, setActiveTab] = useState(0);
 
     const [underlineStyle, setUnderlineStyle] = useState({});
 
-    const tabs = ['Favorites', 'Top Gainers', 'Trending'];
+    const tabs = Object.keys(customs);
 
     const tabsRef = useRef([]);
 
@@ -16,7 +16,7 @@ export default function Tabs(){
             left: activeTabElement.offsetLeft,
             width: activeTabElement.clientWidth,
             height: '2px',
-            'background-color': '#F0B90B'
+            'backgroundColor': '#F0B90B'
         });
     }, [activeTab]);
 
@@ -33,7 +33,7 @@ export default function Tabs(){
                                 'text-gray-600' 
                         }`
                         }
-                        style={{'font-size': '20px'}}
+                        style={{'fontSize': '20px'}}
                         onClick={() => setActiveTab(index)}
                         >
                             {tab}
@@ -42,9 +42,17 @@ export default function Tabs(){
                 <span className="absolute bottom-0 bg-blue-500 transition-all duration-300" style={underlineStyle}/>
             </div>
             <div className="p-4">
-                {activeTab == 0 && <div><BrowserTable /></div>}
+                {Object.values(customs).map((custom, index) => {
+                    return (<>{activeTab == index && 
+                            <div>
+                                <BrowserTable data= {Object.values(custom)} /> 
+                            </div>
+                        }</>)
+                })}
+
+                {/* {activeTab == 0 && <div><BrowserTable data= {Object.values(data)}/></div>}
                 {activeTab == 1 && <div><p> Hello 2 </p></div>}
-                {activeTab == 2 && <div><p> Hello 3 </p></div>}
+                {activeTab == 2 && <div><p> Hello 3 </p></div>} */}
 
             </div>
         </div>
