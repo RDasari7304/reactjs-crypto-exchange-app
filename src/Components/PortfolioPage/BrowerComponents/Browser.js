@@ -14,19 +14,21 @@ export default function Browser(){
 
     const topGainers = cryptoData[0].filter((crypto) => {
         return crypto.change >= 0
-    });
-
-    console.log(topGainers);
+    }).sort((crypto1, crypto2) => crypto2.change - crypto1.change);
 
     return (
-        <div className="bg-white w-full ml-auto mr-auto mt-12 p-6" style={{ borderWidth: '1px', borderRadius: '4px' }}>
+        <div className=" bg-white w-full ml-auto mr-auto mt-12 p-6" style={{ borderWidth: '1px', borderRadius: '4px' }}>
             <Tabs 
                 customs = {{
-                    'Favorites' : favoritesData,
-                    'Top Gainers': topGainers,
-                    'Trending': {},
+                    'Favorites' : {data: favoritesData, customizable: true},
+                    'Top Gainers': {data: Object.fromEntries(Object.entries(topGainers).slice(0, 10)), customizable: false}
                 }}
             />
+            <div className='flex justify-center mt-3'>
+                <button className='trade-crypto-button text-md button-border' style={{ color: '#1E2026', padding: '5px 15px', borderRadius: '5px', fontSize: '14px', fontFamily: 'Arial, sans-serif' }}> 
+                    See more
+                </button>
+            </div>
         </div>
 
     );

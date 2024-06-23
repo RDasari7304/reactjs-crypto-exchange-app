@@ -96,4 +96,19 @@
     font-size: 9px;
     color: #ff6b6b; /* Light red text color for change */
 }
-  
+
+.sort-icon {
+    margin-left: 4px;
+}
+
+.desc-icon::after {
+    content: ' ▼';
+    color: slategrey;
+    opacity: 0.25;
+}
+
+.asc-icon::after {
+    content: ' ▲';
+    color: slategrey;
+    opacity: 0.25;
+}

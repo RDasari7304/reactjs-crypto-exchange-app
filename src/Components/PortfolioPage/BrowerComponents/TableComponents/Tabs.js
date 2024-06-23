@@ -21,8 +21,8 @@ export default function Tabs({customs}){
     }, [activeTab]);
 
     return (
-        <div className="mx-auto">
-            <div className="relative flex justify-around border-gray-200 max-w-md">
+        <div>
+            <div className="relative flex justify-around border-gray-200 max-w-sm">
                 {tabs.map((tab, index) => {
                     return <button
                         key={index}
@@ -45,7 +45,7 @@ export default function Tabs({customs}){
                 {Object.values(customs).map((custom, index) => {
                     return (<>{activeTab == index && 
                             <div>
-                                <BrowserTable data= {Object.values(custom)} /> 
+                                <BrowserTable data= {Object.values(custom.data)} customizable={custom.customizable}/> 
                             </div>
                         }</>)
                 })}
