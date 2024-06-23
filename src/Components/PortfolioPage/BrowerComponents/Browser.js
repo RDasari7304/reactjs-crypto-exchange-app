@@ -12,12 +12,18 @@ export default function Browser(){
         return favorites.includes(crypto.abr);
     });
 
+    const topGainers = cryptoData[0].filter((crypto) => {
+        return crypto.change >= 0
+    });
+
+    console.log(topGainers);
+
     return (
         <div className="bg-white w-full ml-auto mr-auto mt-12 p-6" style={{ borderWidth: '1px', borderRadius: '4px' }}>
             <Tabs 
                 customs = {{
                     'Favorites' : favoritesData,
-                    'Top Gainers': {},
+                    'Top Gainers': topGainers,
                     'Trending': {},
                 }}
             />

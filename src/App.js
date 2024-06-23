@@ -19,6 +19,7 @@ function App() {
         });
 
         const {data} = result.data;
+        console.log(data);
         const cryptoData = await data.map((crypto) => {
           return {
             'name': crypto.name,

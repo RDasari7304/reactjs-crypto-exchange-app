@@ -1,4 +1,10 @@
 export default function CryptoData({crypto, logoSrc, pair, price, change, volume}){
+    const isPositive = change >= 0;
+    const percentChangeStyle = isPositive ? 
+    {'backgroundColor': '#f1fef2', 'color': '#49F860'} 
+    : 
+    {'backgroundColor': '#fef2f1', 'color': '#F84960'}
+
     return (
         <tr>
                 <td className="border-t border-b p-4">
@@ -16,7 +22,7 @@ export default function CryptoData({crypto, logoSrc, pair, price, change, volume
                 </td>
                 <td className="border-t border-b p-4 font-medium">$ {Number(price).toLocaleString('en')}</td>
                 <td className="border-t border-b p-4 ">
-                    <button className="px-2 py-1" style={{'backgroundColor': '#fef2f1', 'fontSize': '16px', 'borderRadius': '40%', 'color': '#F84960'}}> {change}% </button>
+                    <button className="px-2 py-1" style={{'fontSize': '16px', 'borderRadius': '25%', ...percentChangeStyle}}> {isPositive ? '+' : ''} {change}% </button>
                 </td>
                 <td className="border-t border-b p-4">{Number(volume).toLocaleString('en')}</td>
         </tr>
