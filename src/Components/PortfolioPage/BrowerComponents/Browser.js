@@ -17,7 +17,7 @@ export default function Browser(){
     }).sort((crypto1, crypto2) => crypto2.change - crypto1.change);
 
     return (
-        <div className=" bg-white w-full ml-auto mr-auto mt-12 p-6" style={{ borderWidth: '1px', borderRadius: '4px' }}>
+        <div className=" bg-white max-w-7xl w-full ml-auto mr-auto mt-12 p-6" style={{ borderWidth: '1px', borderRadius: '4px' }}>
             <Tabs 
                 customs = {{
                     'Favorites' : {data: favoritesData, customizable: true},

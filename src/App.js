@@ -3,6 +3,8 @@ import {fetchApi} from './dbfunctions.js';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Profile from './Pages/Profile';
+import Prices from './Pages/Prices.js';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export const CryptoContext = createContext();
 
@@ -44,10 +46,13 @@ function App() {
         {loading ? 
           <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" /> 
           :
-          <>
+          <BrowserRouter>
             <Navbar />
-            <Profile />
-          </>
+            <Routes>
+              <Route path = '/' element= {<Profile />} />
+              <Route path = '/prices' element = {<Prices />} />
+            </Routes>
+          </BrowserRouter>
         }
       </div>
     </CryptoContext.Provider>

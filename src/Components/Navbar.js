@@ -11,9 +11,9 @@ import {
   import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
   
   const navigation = [
-    { name: 'Profile', href: '#', current: true },
+    { name: 'Profile', href: '/', current: true },
     { name: 'Buy Crypto', href: '#', current: false },
-    { name: 'Prices', href: '#', current: false },
+    { name: 'Prices', href: '/prices', current: false },
   ]
   
   function classNames(...classes) {

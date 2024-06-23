@@ -14,7 +14,7 @@ export default function Profile(){
     }
 
     return(
-        <div className="p-10 max-w-7xl ml-auto mr-auto">
+        <div className="p-10 w-full ml-auto mr-auto">
             <Balance data={data}/>
             <ActionSection />
             <Browser />

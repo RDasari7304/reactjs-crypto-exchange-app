@@ -5,7 +5,7 @@ import SharePortfolio from '../../../Images/PortfolioPage/ActionImages/share-por
 
 export default function ActionSection(){
     return (
-        <div className="bg-white w-full px-3 py-1 ml-auto mr-auto mt-12 flex portfolio-cards">
+        <div className="bg-white max-w-7xl w-full px-3 py-1 ml-auto mr-auto mt-12 flex portfolio-cards">
             <ActionCard cardTitle= 'Pay Someone' imgSrc= {PaySomeone} className='flex-1'/>
             <ActionCard cardTitle= 'Top Up' imgSrc={TopUp} className='flex-1' />
             <ActionCard cardTitle= 'Share Portfolio' imgSrc= {SharePortfolio} className='flex-1' />
