@@ -12,7 +12,7 @@ import {
   
   const navigation = [
     { name: 'Profile', href: '/', current: true },
-    { name: 'Buy Crypto', href: '#', current: false },
+    { name: 'Buy Crypto', href: '/buy-sell-crypto', current: false },
     { name: 'Prices', href: '/prices', current: false },
   ]
   

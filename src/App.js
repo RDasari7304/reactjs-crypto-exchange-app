@@ -11,9 +11,12 @@ export const CryptoContext = createContext();
 function App() { 
 
   const [cryptos, setCryptos] = useState([]);
+  const [mktStats, setMktStats] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let totalMktCap = 0;
+    let btc_dominance = 0;
     async function fetch(){
         const result = await fetchApi('http://localhost:3001/fetchAPI', {
           endpoint: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
@@ -21,8 +24,13 @@ function App() {
         });
 
         const {data} = result.data;
-        console.log(data);
         const cryptoData = await data.map((crypto) => {
+          if(crypto.id == 1){
+            btc_dominance = crypto.quote.USD.market_cap_dominance;
+          }
+
+          totalMktCap += crypto.quote.USD.fully_diluted_market_cap;
+
           return {
             'name': crypto.name,
             'pair': `${crypto.name} / USDT`,
@@ -34,6 +42,7 @@ function App() {
         });
 
         setCryptos(cryptoData);
+        setMktStats({total_market_cap: totalMktCap, btc_dominance: btc_dominance});
         setLoading(false);
     }
 
@@ -41,8 +50,8 @@ function App() {
   }, []);
 
   return (
-    <CryptoContext.Provider value={[cryptos]}>
-      <div className={`App bg-slate-100 min-w-full min-h-screen ${loading ? 'flex justify-center items-center' : ''}`}>
+    <CryptoContext.Provider value={[cryptos, mktStats]}>
+      <div className={`App bg-slate-50 min-w-full min-h-screen ${loading ? 'flex justify-center items-center' : ''}`}>
         {loading ? 
           <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" /> 
           :
