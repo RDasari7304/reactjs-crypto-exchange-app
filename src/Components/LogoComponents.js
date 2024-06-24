@@ -26,11 +26,13 @@ import ckb from '../Images/PortfolioPage/CryptoLogos/ckb.png';
 import core from '../Images/PortfolioPage/CryptoLogos/core.png';
 import cro from '../Images/PortfolioPage/CryptoLogos/cro.png';
 import dai from '../Images/PortfolioPage/CryptoLogos/dai.png';
+import dexe from '../Images/PortfolioPage/CryptoLogos/dexe.png';
 import doge from '../Images/PortfolioPage/CryptoLogos/doge.png';
 import dot from '../Images/PortfolioPage/CryptoLogos/dot.png';
 import dydx from '../Images/PortfolioPage/CryptoLogos/dydx.png';
 import egld from '../Images/PortfolioPage/CryptoLogos/egld.png';
 import ena from '../Images/PortfolioPage/CryptoLogos/ena.png';
+import ens from '../Images/PortfolioPage/CryptoLogos/ens.png'
 import eos from '../Images/PortfolioPage/CryptoLogos/eos.png';
 import etc from '../Images/PortfolioPage/CryptoLogos/etc.png';
 import eth from '../Images/PortfolioPage/CryptoLogos/eth.png';
@@ -138,11 +140,13 @@ export const Logos = {
     'core': core,
     'cro': cro,
     'dai': dai,
+    'dexe': dexe,
     'doge': doge,
     'dot': dot,
     'dydx': dydx,
     'egld': egld,
     'ena': ena,
+    'ens': ens,
     'eos': eos,
     'etc': etc,
     'eth': eth,

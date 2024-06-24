@@ -1,5 +1,5 @@
-import TableHeader from './TableComponents/TableHeader';
-import CryptoData from './TableComponents/CryptoData';
+import TableHeader from '../../TableComponents/TableHeader';
+import SimpleData from '../../TableComponents/SimpleData';
 import {Logos} from '../../LogoComponents';
 
 export default function BrowserTable({data, customizable}){
@@ -24,11 +24,11 @@ export default function BrowserTable({data, customizable}){
             <tbody>
                 {Object.values(data).map((crypto) => {
                     return(
-                        <CryptoData 
+                        <SimpleData 
                         key={crypto.abr} 
                         crypto={crypto.name} 
                         logoSrc={Logos[crypto.abr.toLowerCase()]} 
-                        pair={crypto.pair} 
+                        pair={crypto.abr + ' / USDT'} 
                         price= {crypto.price} 
                         change={crypto.change} 
                         volume={crypto.volume} 

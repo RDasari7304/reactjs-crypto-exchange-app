@@ -7,7 +7,7 @@ export default function BalanceSector(){
     return (
         <div className= 'balance-sector-card h-28 flex-1 m-3 p-4 flex justify-center'>
             <div className="flex flex-col mr-auto">
-                <span className= 'mt-2' style= {{'letterSpacing': '.1rem', 'fontFamily': 'Verdana, Geneva, Tahoma, sans-serif'}}> Crypto </span>
+                <span className= 'mt-1' style= {{'letterSpacing': '.1rem', 'fontFamily': 'Calibri', 'fontSize': '20px'}}> Crypto </span>
                 <span className= 'mt-1' style= {{'fontFamily': 'Arial, sans-serif', 'fontSize': '32px'}}>$13,574.95</span>
             </div>
             

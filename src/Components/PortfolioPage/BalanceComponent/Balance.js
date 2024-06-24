@@ -27,8 +27,8 @@ export default function Balance({data}){
                         </div>
                     </div>
                     <div className='ml-auto'>
-                        <button className='px-4 py-1 font-sans button-border mr-1'>Deposit</button>
-                        <button className='px-4 py-1 font-sans button-border border-opacity-30 ml-1'>Withdraw</button>
+                        <button className='px-4 py-1 font-sans button-border mr-1' style= {{'fontFamily': 'Calibri', 'fontSize': '16px'}}>Deposit</button>
+                        <button className='px-4 py-1 font-sans button-border border-opacity-30 ml-1' style= {{'fontFamily': 'Calibri', 'fontSize': '16px'}}>Withdraw</button>
                     </div>
                 </div>
             </div>

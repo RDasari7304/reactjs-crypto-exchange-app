@@ -1,7 +1,7 @@
 export default function CryptoData({crypto, logoSrc, pair, price, change, volume, customizable}){
     const isPositive = change >= 0;
     const percentChangeStyle = isPositive ? 
-    {'backgroundColor': '#f1fef2', 'color': '#49F860'} 
+    {'backgroundColor': '#f1fef2', 'color': '#3DCF50'} 
     : 
     {'backgroundColor': '#fef2f1', 'color': '#F84960'}
 
@@ -11,8 +11,8 @@ export default function CryptoData({crypto, logoSrc, pair, price, change, volume
                     <div className="flex items-center">
                         <img src={logoSrc} alt="React Image" className="max-w-8 max-h-8 mr-3" />
                         <div className="flex flex-col">
-                            <span className="font-medium text-md">{crypto}</span>
-                            <span className="text-slate-500">{pair}</span>
+                            <span className="text-md font-medium">{crypto}</span>
+                            <span className="text-slate-500 text-sm">{pair.toUpperCase()}</span>
                         </div>
 
                         {customizable ?
@@ -32,11 +32,13 @@ export default function CryptoData({crypto, logoSrc, pair, price, change, volume
                         }
                     </div>
                 </td>
-                <td className="border-t border-b p-4 font-medium">$ {Number(price).toLocaleString('en')}</td>
+                <td className="border-t border-b p-4" style={{'fontWeight': '500', 'fontSize': '16px', 'fontFamily': 'Calibri'}}>$ {Number(price).toLocaleString('en')}</td>
                 <td className="border-t border-b p-4 ">
-                    <button className="px-2 py-1" style={{'fontSize': '16px', 'borderRadius': '25%', ...percentChangeStyle}}> {isPositive ? '+' : ''} {change}% </button>
+                    <div className="w-full max-w-24">
+                        <button className="w-full px-2 py-1 rounded-md" style={{'fontSize': '16px', ...percentChangeStyle}}> {isPositive ? '+' : ''} {change} % </button>
+                    </div>
                 </td>
-                <td className="border-t border-b p-4">{Number(volume).toLocaleString('en')}</td>
+                <td className="border-t border-b p-4" style={{'fontFamily': 'Calibri', 'fontSize': '16px'}}>{Number(volume).toLocaleString('en')}</td>
         </tr>
     );
 }

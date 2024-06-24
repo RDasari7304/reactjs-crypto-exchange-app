@@ -1,7 +1,8 @@
-import Tabs from './TableComponents/Tabs'
+import Tabs from '../../TableComponents/Tabs'
 import preferences from '../../../TestData/preferences.json';
 import { CryptoContext } from '../../../App';
 import { useContext } from 'react';
+import BrowserTable from './BrowserTable';
 
 export default function Browser(){
 
@@ -20,14 +21,16 @@ export default function Browser(){
         <div className=" bg-white max-w-7xl w-full ml-auto mr-auto mt-12 p-6" style={{ borderWidth: '1px', borderRadius: '4px' }}>
             <Tabs 
                 customs = {{
-                    'Favorites' : {data: favoritesData, customizable: true},
-                    'Top Gainers': {data: Object.fromEntries(Object.entries(topGainers).slice(0, 10)), customizable: false}
+                    'Favorites' : <BrowserTable data= {Object.values(favoritesData)} customizable={true}/>,
+                    'Top Gainers': <BrowserTable data= {Object.values(Object.fromEntries(Object.entries(topGainers).slice(0, 10)))} customizable={false}/>
                 }}
             />
             <div className='flex justify-center mt-3'>
-                <button className='trade-crypto-button text-md button-border' style={{ color: '#1E2026', padding: '5px 15px', borderRadius: '5px', fontSize: '14px', fontFamily: 'Arial, sans-serif' }}> 
-                    See more
-                </button>
+                <a href='/prices'>
+                    <button className='trade-crypto-button text-md button-border' style={{ color: '#1E2026', padding: '5px 15px', borderRadius: '5px', fontSize: '14px', fontFamily: 'Arial, sans-serif' }}> 
+                        See more
+                    </button>
+                </a>
             </div>
         </div>
 

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { CryptoContext } from "../App";
 import SearchBar from "../Components/PricesPage/SearchBar";
+import Tabs from "../Components/TableComponents/Tabs.js";
+import AdvancedTable from "../Components/PricesPage/AdvancedTable.js";
 
 export default function Prices(){
     const [cryptoData, mktStats] = useContext(CryptoContext);
@@ -25,7 +27,14 @@ export default function Prices(){
                 
                 </p>
                 <SearchBar />
-
+                <div className="w-full bg-white p-4 mt-20 border rounded-md">
+                    <Tabs 
+                        customs ={{
+                            'Stablecoins': <AdvancedTable data= {cryptoData} comparisonPair='usdt' />,
+                            'BTC Pairs': <AdvancedTable data= {cryptoData} comparisonPair='btc' />
+                        }}
+                    />
+                </div>
             </div>
         </div>
     );

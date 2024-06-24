@@ -33,10 +33,12 @@ function App() {
 
           return {
             'name': crypto.name,
-            'pair': `${crypto.name} / USDT`,
             'price': `${Number(crypto.quote.USD.price).toFixed(2)}`,
             'change': `${Number(crypto.quote.USD.percent_change_24h).toFixed(2)}`,
             'volume': `${Number(crypto.quote.USD.volume_24h).toFixed(2)}`,
+            'circulating_supply': crypto.circulating_supply,
+            'total_supply': crypto.total_supply,
+            'market_cap': crypto.quote.USD.fully_diluted_market_cap,
             'abr': crypto.symbol.toLowerCase()
           }
         });
