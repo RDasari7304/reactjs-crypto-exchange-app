@@ -29,7 +29,7 @@ export default function AdvancedTable({data, comparisonPair}){
                 <TableHeader headerName={''}/>
             </thead>
             <tbody>
-                {data.map((crypto) => {
+                {data ? data.map((crypto) => {
                     return <AdvancedData
                      name={crypto.name} 
                      pair={crypto.abr + ` / ${comparisonPair}`}
@@ -41,7 +41,7 @@ export default function AdvancedTable({data, comparisonPair}){
                      circulating_supply={crypto.circulating_supply}
                      total_supply={crypto.total_supply}
                      />
-                })}
+                }) : <p></p>}
             </tbody>
         </table>
     );

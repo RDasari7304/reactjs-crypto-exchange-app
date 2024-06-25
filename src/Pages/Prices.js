@@ -5,7 +5,7 @@ import Tabs from "../Components/TableComponents/Tabs.js";
 import AdvancedTable from "../Components/PricesPage/AdvancedTable.js";
 
 export default function Prices(){
-    const [cryptoData, mktStats] = useContext(CryptoContext);
+    const [cryptoData, setCryptos, mktStats] = useContext(CryptoContext);
     const market_cap_trillions = (mktStats.total_market_cap / Math.pow(10, 12)).toFixed(2);
 
     return (
@@ -26,12 +26,16 @@ export default function Prices(){
                     , with a btc dominance of <p className="text-red-400 px-2">{mktStats.btc_dominance.toFixed(2)} %</p>
                 
                 </p>
-                <SearchBar />
+                <SearchBar data={cryptoData} setData={setCryptos}/>
                 <div className="w-full bg-white p-4 mt-20 border rounded-md">
                     <Tabs 
                         customs ={{
                             'Stablecoins': <AdvancedTable data= {cryptoData} comparisonPair='usdt' />,
-                            'BTC Pairs': <AdvancedTable data= {cryptoData} comparisonPair='btc' />
+                            'BTC Pairs':  (
+                                            <div className="flex justify-center items-center" style ={{'height': '50vh'}}>
+                                                <p style={{"font-family": 'Calibri'}}> This application currently does not support BTC Pairs. </p>
+                                            </div>
+                                            )
                         }}
                     />
                 </div>
