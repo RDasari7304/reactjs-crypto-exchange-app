@@ -1,22 +1,5 @@
-import { useEffect, useState } from "react";
-
-export default function SearchBar({data, setData}){
-    const [originalData, setOriginalData] = useState([]);
-
-    useEffect(() => setOriginalData(data), []);
-
-    function filterData(startingVal){
-
-        const filteredData = [...originalData].filter((data) => {
-            const lowercase_name = data.name.toLowerCase();
-            const lowercase_symbol = data.abr.toLowerCase();
-            const lowercase_query = startingVal.toLowerCase();
-
-            return lowercase_name.startsWith(lowercase_query) || lowercase_symbol.startsWith(lowercase_query);
-        });
-
-        setData(filteredData);
-    }
+export default function SearchBar({data}){
+    
 
     return (
         <div className="relative w-full flex justify-center mt-8">
@@ -27,7 +10,7 @@ export default function SearchBar({data, setData}){
                     </svg>
                 </div>
                 
-                <input onChange={(e) => {filterData(e.target.value)}}type='search' 
+                <input onChange={(e) => {}} type='search' 
                 className="w-full focus:outline-none focus:ring-yellow-500 focus:border-yellow-300 text-md ps-10 p-3 border border-gray-200 rounded-xl bg-gray-50" 
                 placeholder="Search"/>
 

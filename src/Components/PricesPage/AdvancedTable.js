@@ -1,8 +1,9 @@
 import AdvancedData from "../TableComponents/AdvancedData";
 import TableHeader from "../TableComponents/TableHeader";
 import { Logos } from "../LogoComponents";
+import TablePagination from "../TableComponents/TablePagination";
 
-export default function AdvancedTable({data, comparisonPair}){
+export default function AdvancedTable({data, setData, comparisonPair}){
     return (
         <table className="border-collapse table-auto w-full text-sm mt-4">
             <colgroup>
@@ -30,7 +31,7 @@ export default function AdvancedTable({data, comparisonPair}){
             </thead>
             <tbody>
                 {data ? data.map((crypto) => {
-                    return <AdvancedData
+                    return crypto.display && <AdvancedData
                      name={crypto.name} 
                      pair={crypto.abr + ` / ${comparisonPair}`}
                      logoSrc={Logos[crypto.abr.toLowerCase()]}
@@ -42,6 +43,12 @@ export default function AdvancedTable({data, comparisonPair}){
                      total_supply={crypto.total_supply}
                      />
                 }) : <p></p>}
+                <tr>
+                    <td colSpan="9">
+                        <TablePagination data={data} setData= {setData} numPageEntities={17}/>
+                    </td>
+                </tr>
+                
             </tbody>
         </table>
     );
