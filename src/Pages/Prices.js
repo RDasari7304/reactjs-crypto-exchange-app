@@ -9,14 +9,17 @@ export default function Prices(){
     const market_cap_trillions = (mktStats.total_market_cap / Math.pow(10, 12)).toFixed(2);
 
     const [filterableData, setFilterableData] = useState([]);
+    const [searchableData, setSearchableData] = useState([]);
+    const [hideScreen, setHideScreen] = useState(false);
 
     useEffect(() => {
         setFilterableData(cryptoData.map((crypto) => ({...crypto, 'display': true})));
+        setSearchableData(cryptoData.map((crypto) => ({...crypto, 'display': false})));
     }, []);
 
     return (
-        <div className="w-full p-10">
-            <div className="flex flex-col justify-center items-center m-10">
+        <div className="w-full">
+            <div className="flex flex-col justify-center items-center mt-10">
                 <p 
                 className="flex" 
                 style={{'fontSize': '30px', 'color': '#76808F'}}> 
@@ -32,8 +35,9 @@ export default function Prices(){
                     , with a btc dominance of <p className="text-red-400 px-2">{mktStats.btc_dominance.toFixed(2)} %</p>
                 
                 </p>
-                <SearchBar data={filterableData} setData={setFilterableData}/>
-                <div className="w-full bg-white p-4 mt-20 border rounded-md">
+                <SearchBar data={searchableData} setData={setSearchableData} setHideScreen= {setHideScreen}/>
+                <div className={`w-full p-10 ${hideScreen ? 'opacity-30' : ''}`}>
+                <div className="w-full bg-white p-4 mt-16 border rounded-md">
                     <Tabs 
                         customs ={{
                             'Stablecoins': <AdvancedTable data= {filterableData} setData={setFilterableData} comparisonPair='usdt' />,
@@ -44,6 +48,7 @@ export default function Prices(){
                                             )
                         }}
                     />
+                </div>
                 </div>
             </div>
         </div>

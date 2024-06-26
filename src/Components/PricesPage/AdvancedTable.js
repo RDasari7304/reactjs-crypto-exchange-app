@@ -45,7 +45,7 @@ export default function AdvancedTable({data, setData, comparisonPair}){
                 }) : <p></p>}
                 <tr>
                     <td colSpan="9">
-                        <TablePagination data={data} setData= {setData} numPageEntities={17}/>
+                        <TablePagination data={data} setData= {setData} numPageEntities={20 }/>
                     </td>
                 </tr>
                 

@@ -2,28 +2,42 @@ import TableHeader from '../../TableComponents/TableHeader';
 import SimpleData from '../../TableComponents/SimpleData';
 import {Logos} from '../../LogoComponents';
 
-export default function BrowserTable({data, customizable}){
+export default function BrowserTable({data, isFavoritable, isBrowser, showHeaders}){
 
     return (
         <table className="border-collapse table-auto w-full text-sm">
             {/* Column group allows to style each individual column */}
-            <colgroup> 
-                <col style={{width: '25%'}} />
-                <col style={{width: '25%'}} />
-                <col style={{width: '25%'}} />
-                <col style={{width: '25%'}} />
-            </colgroup>
+            {isBrowser ? 
+                <colgroup> 
+                    <col style={{width: '25%'}} />
+                    <col style={{width: '25%'}} />
+                    <col style={{width: '25%'}} />
+                    <col style={{width: '25%'}} />
+                </colgroup> 
+                : 
+                <colgroup> 
+                    <col style={{width: '30%'}} />
+                    <col style={{width: '23%'}} />
+                    <col style={{width: '23%'}} />
+                    <col style={{width: '23%'}} />
+                </colgroup>
+            }
             <thead>
+                {showHeaders &&
                 <tr>
                     <TableHeader headerName='Pair' sortable= {false}/>
                     <TableHeader headerName='Price' sortable={true}/>
                     <TableHeader headerName='24 Hour Change' sortable={true}/>
                     <TableHeader headerName='24 Hour Volume' sortable={true}/>
-                </tr>
+                </tr>}
             </thead>
             <tbody>
                 {Object.values(data).map((crypto) => {
-                    return(
+                    if(!isBrowser && !crypto.display){
+                        return null;
+                    }
+
+                    return (
                         <SimpleData 
                         key={crypto.abr} 
                         crypto={crypto.name} 
@@ -32,7 +46,7 @@ export default function BrowserTable({data, customizable}){
                         price= {crypto.price} 
                         change={crypto.change} 
                         volume={crypto.volume} 
-                        customizable= {customizable}
+                        customs={{favoritable: isFavoritable, isBrowser: isBrowser}}
                         />
                     )
                 })}

@@ -21,8 +21,10 @@ export default function Browser(){
         <div className=" bg-white max-w-7xl w-full ml-auto mr-auto mt-12 p-6" style={{ borderWidth: '1px', borderRadius: '4px' }}>
             <Tabs 
                 customs = {{
-                    'Favorites' : <BrowserTable data= {Object.values(favoritesData)} customizable={true}/>,
-                    'Top Gainers': <BrowserTable data= {Object.values(Object.fromEntries(Object.entries(topGainers).slice(0, 10)))} customizable={false}/>
+                    'Favorites' : <BrowserTable data= {Object.values(favoritesData)}
+                                     isFavoritable={true} isBrowser={true} showHeaders={true}/>,
+                    'Top Gainers': <BrowserTable data= {Object.values(Object.fromEntries(Object.entries(topGainers).slice(0, 10)))} 
+                                    isFavoritable={false} isBrowser={true} showHeaders={true}/>
                 }}
             />
             <div className='flex justify-center mt-3'>
