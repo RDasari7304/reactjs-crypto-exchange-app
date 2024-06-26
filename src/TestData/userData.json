@@ -1,0 +1,22 @@
+{
+    "username": "rohit_dasari23",
+    "first_name": "Rohit",
+    "last_name": "Dasari",
+    "age": 18,
+    "favorites": ["rndr", "btc", "atom", "ada", "tia", "fil", "usdt"],
+    "assets" : {
+        "0": {
+            "name": "bitcoin",
+             "abr": "btc", 
+             "amount": 2.54, 
+             "transaction_history": {
+                "0": {
+                    "date": "06-03-2024",
+                    "transaction_type": "buy",
+                    "amount": "2.54",
+                    "price_bought": 61606
+                }
+             }
+        }
+    }
+}

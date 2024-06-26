@@ -2,8 +2,13 @@ import AdvancedData from "../TableComponents/AdvancedData";
 import TableHeader from "../TableComponents/TableHeader";
 import { Logos } from "../LogoComponents";
 import TablePagination from "../TableComponents/TablePagination";
+import { useContext } from "react";
+import { CryptoContext } from "../../App";
 
 export default function AdvancedTable({data, setData, comparisonPair}){
+    const [, , , userData] = useContext(CryptoContext);
+    const {favorites} = userData;
+
     return (
         <table className="border-collapse table-auto w-full text-sm mt-4">
             <colgroup>
@@ -41,6 +46,7 @@ export default function AdvancedTable({data, setData, comparisonPair}){
                      market_cap={crypto.market_cap}
                      circulating_supply={crypto.circulating_supply}
                      total_supply={crypto.total_supply}
+                     isFavorited={favorites.includes(crypto.abr)}
                      />
                 }) : <p></p>}
                 <tr>

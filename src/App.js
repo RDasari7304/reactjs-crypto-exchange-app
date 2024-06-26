@@ -12,6 +12,7 @@ function App() {
 
   const [cryptos, setCryptos] = useState([]);
   const [mktStats, setMktStats] = useState({});
+  const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,6 +44,9 @@ function App() {
           }
         });
 
+        const {data: userData} = await fetchApi('http://localhost:3001/fetchUser/4');
+
+        setUserData(userData);
         setCryptos(cryptoData);
         setMktStats({total_market_cap: totalMktCap, btc_dominance: btc_dominance});
         setLoading(false);
@@ -52,7 +56,7 @@ function App() {
   }, []);
 
   return (
-    <CryptoContext.Provider value={[cryptos, setCryptos, mktStats]}>
+    <CryptoContext.Provider value={[cryptos, setCryptos, mktStats, userData]}>
       <div className={`App bg-slate-50 min-w-full min-h-screen ${loading ? 'flex justify-center items-center' : ''}`}>
         {loading ? 
           <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" /> 

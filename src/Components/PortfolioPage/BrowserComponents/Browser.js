@@ -1,19 +1,18 @@
 import Tabs from '../../TableComponents/Tabs'
-import preferences from '../../../TestData/preferences.json';
 import { CryptoContext } from '../../../App';
 import { useContext } from 'react';
 import BrowserTable from './BrowserTable';
 
 export default function Browser(){
 
-    const cryptoData = useContext(CryptoContext);
-    const {favorites} = preferences;
+    const [cryptoData, , ,userData] = useContext(CryptoContext);
+    const {favorites} = userData;
 
-    const favoritesData = cryptoData[0].filter((crypto) => {
+    const favoritesData = cryptoData.filter((crypto) => {
         return favorites.includes(crypto.abr);
     });
 
-    const topGainers = cryptoData[0].filter((crypto) => {
+    const topGainers = cryptoData.filter((crypto) => {
         return crypto.change >= 0
     }).sort((crypto1, crypto2) => crypto2.change - crypto1.change);
 
