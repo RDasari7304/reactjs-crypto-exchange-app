@@ -1,12 +1,13 @@
 import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
 
-export default function CryptoData({crypto, logoSrc, pair, price, change, volume, customs}){
+export default function CryptoData({crypto, abr, logoSrc, pair, price, change, volume, customs}){
     const isPositive = change >= 0;
     const percentChangeStyle = isPositive ? 
     {'backgroundColor': '#f1fef2', 'color': '#3DCF50'} 
     : 
     {'backgroundColor': '#fef2f1', 'color': '#F84960'}
+
 
     return (
         <tr className="hover:bg-gray-100 cursor-pointer">
@@ -19,7 +20,7 @@ export default function CryptoData({crypto, logoSrc, pair, price, change, volume
                         </div>
 
                         {customs.favoritable ?
-                            <AddFavorite isActive= {true} onClick={() => {}}/>
+                            <AddFavorite isActive= {true} onToggle={() => {}} value= {abr}/>
                             :
                             <></>
                         }

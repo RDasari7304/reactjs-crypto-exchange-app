@@ -2,12 +2,21 @@ import AdvancedData from "../TableComponents/AdvancedData";
 import TableHeader from "../TableComponents/TableHeader";
 import { Logos } from "../LogoComponents";
 import TablePagination from "../TableComponents/TablePagination";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CryptoContext } from "../../App";
+import SortSymbol from '../TableComponents/SortSymbol';
 
 export default function AdvancedTable({data, setData, comparisonPair}){
     const [, , , userData] = useContext(CryptoContext);
     const {favorites} = userData;
+    const [sortKey, setSortKey] = useState('id');
+    const [ascending, setAscending] = useState(true);
+
+    function toggleSort(newKey){
+        setAscending(newKey == sortKey ? !ascending : true);
+        setSortKey(newKey);
+    }
+
 
     return (
         <table className="border-collapse table-auto w-full text-sm mt-4">
@@ -26,17 +35,18 @@ export default function AdvancedTable({data, setData, comparisonPair}){
             <thead>
                 <TableHeader headerName={''}/>
                 <TableHeader headerName={'Pair Name'}/>
-                <TableHeader headerName={'Pair Price'}/>
-                <TableHeader headerName={'Daily Change'}/>
-                <TableHeader headerName={'Daily Volume'}/>
-                <TableHeader headerName={'Circulating Supply'}/>
-                <TableHeader headerName={'Total Supply'}/>
-                <TableHeader headerName={'Market Cap'}/>
+                <TableHeader headerName={'Pair Price'} icon= {<SortSymbol ascending={ascending} active={sortKey == 'price'} onClick={() => toggleSort('price')}/>}/>
+                <TableHeader headerName={'Daily Change'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'change'} onClick={() => toggleSort('change')}/>}/>
+                <TableHeader headerName={'Daily Volume'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'volume'} onClick={() => toggleSort('volume')}/>}/>
+                <TableHeader headerName={'Circulating Supply'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'circulating_supply'} onClick={() => toggleSort('circulating_supply')}/>}/>
+                <TableHeader headerName={'Total Supply'} icon= {<SortSymbol ascending={ascending} active={sortKey == 'total_supply'} onClick={() => toggleSort('total_supply')} />}/>
+                <TableHeader headerName={'Market Cap'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'market_cap'}  onClick={() => toggleSort('market_cap')}/>}/>
                 <TableHeader headerName={''}/>
             </thead>
             <tbody>
-                {data ? data.map((crypto) => {
+                {data ? data.sort((a, b) => ascending ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey]).map((crypto) => {
                     return crypto.display && <AdvancedData
+                     key={crypto.id}
                      name={crypto.name} 
                      abr={crypto.abr}
                      pair={crypto.abr + ` / ${comparisonPair}`}

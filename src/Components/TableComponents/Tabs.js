@@ -43,11 +43,11 @@ export default function Tabs({customs}){
             </div>
             <div className="p-4">
                 {Object.values(customs).map((custom, index) => {
-                    return (<>{activeTab == index && 
-                            <div>
+                    return (activeTab == index && 
+                            <div key={index}>
                                 {custom}
                             </div>
-                        }</>)
+                        )
                 })}
 
                 {/* {activeTab == 0 && <div><BrowserTable data= {Object.values(data)}/></div>}

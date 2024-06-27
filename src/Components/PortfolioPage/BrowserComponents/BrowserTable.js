@@ -41,6 +41,7 @@ export default function BrowserTable({data, isFavoritable, isBrowser, showHeader
                         <SimpleData 
                         key={crypto.abr} 
                         crypto={crypto.name} 
+                        abr={crypto.abr}
                         logoSrc={Logos[crypto.abr.toLowerCase()]} 
                         pair={crypto.abr + ' / USDT'} 
                         price= {crypto.price} 

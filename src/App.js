@@ -25,7 +25,7 @@ function App() {
         });
 
         const {data} = result.data;
-        const cryptoData = await data.map((crypto) => {
+        const cryptoData = await data.map((crypto, index) => {
           if(crypto.id == 1){
             btc_dominance = crypto.quote.USD.market_cap_dominance;
           }
@@ -33,6 +33,7 @@ function App() {
           totalMktCap += crypto.quote.USD.fully_diluted_market_cap;
 
           return {
+            'id': index,
             'name': crypto.name,
             'price': `${Number(crypto.quote.USD.price).toFixed(2)}`,
             'change': `${Number(crypto.quote.USD.percent_change_24h).toFixed(2)}`,

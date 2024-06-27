@@ -6,8 +6,8 @@ export default function TablePagination({data, setData, numPageEntities}){
     const [active, setActive] = useState(0);
     
     function pageData(){
-        const filteredData = data.map((data, index) => {
-            return {...data, display: index >= active * numPageEntities && index < (active + 1) * numPageEntities}
+        const filteredData = data.map((data) => {
+            return {...data, display: data.id >= active * numPageEntities && data.id < (active + 1) * numPageEntities}
         });
         
         setData(filteredData);
