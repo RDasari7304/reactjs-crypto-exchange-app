@@ -1,5 +1,5 @@
 import ToggleEye from './ToggleEye.js';
-import Graph from './Graph.js';
+import BalanceGraph from './BalanceGraph.js';
 import { useState } from 'react';
 import BalanceSector from './BalanceSector.js';
 
@@ -32,7 +32,7 @@ export default function Balance({data}){
                     </div>
                 </div>
             </div>
-            <Graph data={data}/>
+            <BalanceGraph data={data}/>
             <div className='flex justify-center items-center w-full'>
                 <BalanceSector />
                 <BalanceSector />

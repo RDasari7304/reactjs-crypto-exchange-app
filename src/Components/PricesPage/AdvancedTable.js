@@ -1,6 +1,5 @@
 import AdvancedData from "../TableComponents/AdvancedData";
 import TableHeader from "../TableComponents/TableHeader";
-import { Logos } from "../LogoComponents";
 import TablePagination from "../TableComponents/TablePagination";
 import { useContext, useState } from "react";
 import { CryptoContext } from "../../App";
@@ -37,9 +36,9 @@ export default function AdvancedTable({data, setData, comparisonPair}){
                 <TableHeader headerName={'Pair Name'}/>
                 <TableHeader headerName={'Pair Price'} icon= {<SortSymbol ascending={ascending} active={sortKey == 'price'} onClick={() => toggleSort('price')}/>}/>
                 <TableHeader headerName={'Daily Change'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'change'} onClick={() => toggleSort('change')}/>}/>
-                <TableHeader headerName={'Daily Volume'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'volume'} onClick={() => toggleSort('volume')}/>}/>
-                <TableHeader headerName={'Circulating Supply'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'circulating_supply'} onClick={() => toggleSort('circulating_supply')}/>}/>
-                <TableHeader headerName={'Total Supply'} icon= {<SortSymbol ascending={ascending} active={sortKey == 'total_supply'} onClick={() => toggleSort('total_supply')} />}/>
+                <TableHeader headerName={'Daily High'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'high_24'} onClick={() => toggleSort('high_24')}/>}/>
+                <TableHeader headerName={'Daily Low'} icon= {<SortSymbol ascending={ascending} active={sortKey == 'low_24'} onClick={() => toggleSort('low_24')} />}/>
+                <TableHeader headerName={'Volume'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'volume'} onClick={() => toggleSort('volume')}/>}/>
                 <TableHeader headerName={'Market Cap'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'market_cap'}  onClick={() => toggleSort('market_cap')}/>}/>
                 <TableHeader headerName={''}/>
             </thead>
@@ -50,13 +49,13 @@ export default function AdvancedTable({data, setData, comparisonPair}){
                      name={crypto.name} 
                      abr={crypto.abr}
                      pair={crypto.abr + ` / ${comparisonPair}`}
-                     logoSrc={Logos[crypto.abr.toLowerCase()]}
+                     logoSrc={crypto.imgSrc}
                      price={crypto.price} 
                      change={crypto.change} 
                      volume={crypto.volume} 
+                     low_24={crypto.low_24}
+                     high_24={crypto.high_24}
                      market_cap={crypto.market_cap}
-                     circulating_supply={crypto.circulating_supply}
-                     total_supply={crypto.total_supply}
                      isFavorited={favorites.includes(crypto.abr)}
                      />
                 }) : <p></p>}

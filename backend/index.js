@@ -68,10 +68,10 @@ app.put('/updateUser/:id', async(req, res) => {
 })
 
 app.get('/fetchAPI', async (req, res) => {
-    const {endpoint, headers} = req.query;
+    const {endpoint, headers, params} = req.query;
 
 
-    const response = await axios.get(endpoint, {headers: headers});
+    const response = await axios.get(endpoint, {params: params, headers: headers});
     res.json(response.data);
 });
 

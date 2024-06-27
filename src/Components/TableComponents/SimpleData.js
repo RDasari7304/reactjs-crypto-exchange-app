@@ -13,7 +13,7 @@ export default function CryptoData({crypto, abr, logoSrc, pair, price, change, v
         <tr className="hover:bg-gray-100 cursor-pointer">
                 <td className="border-b p-4">
                     <div className="flex items-center">
-                        <img src={logoSrc} alt="React Image" className={customs.isBrowser ? "max-w-8 max-h-8 mr-3" : "max-w-6 max-h-6 mr-3"} />
+                        <img src={logoSrc} alt="React Image" className={customs.isBrowser ? "max-w-8 max-h-8 mr-4" : "max-w-6 max-h-6 mr-3"} />
                         <div className="flex flex-col">
                             <span className="text-sm font-medium">{crypto}</span>
                             <span className="text-slate-500 text-sm">{pair.toUpperCase()}</span>
@@ -26,7 +26,7 @@ export default function CryptoData({crypto, abr, logoSrc, pair, price, change, v
                         }
                     </div>
                 </td>
-                <td className="border-b p-4" style={{'fontWeight': '500', 'fontSize': customs.isBrowser ? "16px" : "14px", 'fontFamily': 'Calibri'}}>${Number(price).toLocaleString('en')}</td>
+                <td className="border-b p-4" style={{'fontWeight': '500', 'fontSize': customs.isBrowser ? "16px" : "14px", 'fontFamily': 'Calibri'}}>${ price > .1 ? Number(price).toLocaleString('en') : price}</td>
 
                 {customs.isBrowser ? 
                 <>

@@ -1,7 +1,7 @@
-import apecoin from '../../../Images/PortfolioPage/CryptoLogos/ape.png';
-import rndr from '../../../Images/PortfolioPage/CryptoLogos/rndr.png';
-import filecoin from '../../../Images/PortfolioPage/CryptoLogos/fil.png';
-import bitcoin from '../../../Images/PortfolioPage/CryptoLogos/btc.png';
+import apecoin from '../../../Images/CryptoLogos/ape.png';
+import rndr from '../../../Images/CryptoLogos/rndr.png';
+import filecoin from '../../../Images/CryptoLogos/fil.png';
+import bitcoin from '../../../Images/CryptoLogos/btc.png';
 
 export default function BalanceSector(){
     return (

@@ -1,6 +1,5 @@
 import TableHeader from '../../TableComponents/TableHeader';
 import SimpleData from '../../TableComponents/SimpleData';
-import {Logos} from '../../LogoComponents';
 
 export default function BrowserTable({data, isFavoritable, isBrowser, showHeaders}){
 
@@ -42,7 +41,7 @@ export default function BrowserTable({data, isFavoritable, isBrowser, showHeader
                         key={crypto.abr} 
                         crypto={crypto.name} 
                         abr={crypto.abr}
-                        logoSrc={Logos[crypto.abr.toLowerCase()]} 
+                        logoSrc={crypto.imgSrc} 
                         pair={crypto.abr + ' / USDT'} 
                         price= {crypto.price} 
                         change={crypto.change} 

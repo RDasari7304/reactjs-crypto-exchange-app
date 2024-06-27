@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import BrowserTable from "../PortfolioPage/BrowserComponents/BrowserTable";
 
 export default function Tabs({customs}){
     const [activeTab, setActiveTab] = useState(0);
