@@ -4,15 +4,19 @@ export default function TablePagination({data, setData, numPageEntities}){
     const numPages = Math.ceil(data.length / numPageEntities);
     const pages = Array.from({length: numPages}, (_, i) => i + 1);
     const [active, setActive] = useState(0);
-
-    useEffect(() => {
+    
+    function pageData(){
         const filteredData = data.map((data, index) => {
             return {...data, display: index >= active * numPageEntities && index < (active + 1) * numPageEntities}
         });
         
         setData(filteredData);
-    }, [data, active]);
+    }
 
+    useEffect(() => {
+        pageData();
+    }, [active, numPageEntities]);
+    
     return (
         <div className="flex flex-row justify-center items-center mt-4">
             {active != 0 && <svg 

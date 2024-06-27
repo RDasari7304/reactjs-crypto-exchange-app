@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
 
-export default function AdvancedData({name, pair, logoSrc, price, change, volume, market_cap, circulating_supply, total_supply, isFavorited}){
+export default function AdvancedData({name, abr, pair, logoSrc, price, change, volume, market_cap, circulating_supply, total_supply, isFavorited}){
     const isPositive = change > 0;
 
     const [favoritedState, setFavoritedState] = useState(isFavorited);
@@ -28,7 +28,7 @@ export default function AdvancedData({name, pair, logoSrc, price, change, volume
     return (
         <tr>
             <td className="border-t border-b p-4">
-                <AddFavorite isActive ={favoritedState} onClick={() => {setFavoritedState(!favoritedState)}}/>
+                <AddFavorite isActive ={favoritedState} onToggle={() => {setFavoritedState(!favoritedState)}} value= {abr}/>
 
             </td>
             <td className="border-t border-b p-4">

@@ -9,4 +9,8 @@ function fetchApi(endpoint, payload = undefined){
     }: {});
 }
 
-export {fetchApi}
+function putData(endpoint, payload, headers = {}){
+    return axios.put(endpoint, payload, {headers});
+}
+
+export {fetchApi, putData}

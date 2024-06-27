@@ -13,8 +13,8 @@ export default function Prices(){
     const [hideScreen, setHideScreen] = useState(false);
 
     useEffect(() => {
-        setFilterableData(cryptoData.map((crypto) => ({...crypto, 'display': true})));
-        setSearchableData(cryptoData.map((crypto) => ({...crypto, 'display': false})));
+        setFilterableData(cryptoData.map((crypto, index) => ({...crypto, 'display': index < 20})));
+        setSearchableData(cryptoData.map((crypto, index) => ({...crypto, 'display': false})));
     }, []);
 
     return (

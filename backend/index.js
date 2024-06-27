@@ -30,6 +30,7 @@ conn.connect((err) => {
 })
 
 app.use(cors());
+app.use(express.json());
 
 app.get('/fetchUser/:id', async (req, res) => {
     const {id} = req.params;
@@ -38,9 +39,8 @@ app.get('/fetchUser/:id', async (req, res) => {
         const sql = `SELECT * FROM mysql.user_profiles where pk_users = ${id}`;
         const result = await queryDB(sql);
         
-        const unpacked_meta_data = JSON.parse(result[0].meta_data);
-        const user = {...result[0], ...unpacked_meta_data};
-        delete user['meta_data'];
+        const favorites = result[0].favorites.split(',');
+        const user = {...result[0], favorites: favorites};
 
         res.status(200).json(user);
     }catch(err){
@@ -48,6 +48,24 @@ app.get('/fetchUser/:id', async (req, res) => {
         res.status(500).send('Internal server error.');
     }
 });
+
+app.put('/updateUser/:id', async(req, res) => {
+    const {id} = req.params;
+    const payload = req.body;
+
+    try{
+        const updateStatement = Object.entries(payload).map(([key, value]) => `${key} = '${value}'`).join(', ');
+
+        const sql = `UPDATE MYSQL.USER_PROFILES SET ${updateStatement} where pk_users = ${id}`;
+        const result = await queryDB(sql);
+
+        res.status(200).json(result);
+        
+    }catch(err){
+        console.log('Database update error: ', err);
+        res.status(500).send('Internal server error.')
+    }
+})
 
 app.get('/fetchAPI', async (req, res) => {
     const {endpoint, headers} = req.query;

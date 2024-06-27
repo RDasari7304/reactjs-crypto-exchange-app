@@ -38,6 +38,7 @@ export default function AdvancedTable({data, setData, comparisonPair}){
                 {data ? data.map((crypto) => {
                     return crypto.display && <AdvancedData
                      name={crypto.name} 
+                     abr={crypto.abr}
                      pair={crypto.abr + ` / ${comparisonPair}`}
                      logoSrc={Logos[crypto.abr.toLowerCase()]}
                      price={crypto.price} 

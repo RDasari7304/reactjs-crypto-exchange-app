@@ -19,7 +19,7 @@ export default function CryptoData({crypto, logoSrc, pair, price, change, volume
                         </div>
 
                         {customs.favoritable ?
-                            <AddFavorite isActive= {true} />
+                            <AddFavorite isActive= {true} onClick={() => {}}/>
                             :
                             <></>
                         }

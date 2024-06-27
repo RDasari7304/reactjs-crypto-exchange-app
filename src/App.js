@@ -56,7 +56,7 @@ function App() {
   }, []);
 
   return (
-    <CryptoContext.Provider value={[cryptos, setCryptos, mktStats, userData]}>
+    <CryptoContext.Provider value={[cryptos, setCryptos, mktStats, userData, setUserData]}>
       <div className={`App bg-slate-50 min-w-full min-h-screen ${loading ? 'flex justify-center items-center' : ''}`}>
         {loading ? 
           <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" /> 
