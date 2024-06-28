@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
 
-export default function AdvancedData({name, abr, pair, logoSrc, price, change, volume, low_24, high_24, market_cap, isFavorited}){
+export default function AdvancedData({crypto, name, abr, pair, logoSrc, price, change, volume, low_24, high_24, market_cap, isFavorited}){
     const isPositive = change > 0;
 
     const [favoritedState, setFavoritedState] = useState(isFavorited);

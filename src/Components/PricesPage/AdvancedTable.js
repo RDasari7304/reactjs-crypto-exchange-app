@@ -27,7 +27,7 @@ export default function AdvancedTable({data, setData, comparisonPair}){
                 <col style={{width: '12%'}} />
                 <col style={{width: '12%'}} />
                 <col style={{width: '12%'}} />
-                <col style={{width: '10%'}} />
+                <col style={{width: '12%'}} />
                 <col style={{width: '14%'}} />
             </colgroup>
 
@@ -40,11 +40,13 @@ export default function AdvancedTable({data, setData, comparisonPair}){
                 <TableHeader headerName={'Daily Low'} icon= {<SortSymbol ascending={ascending} active={sortKey == 'low_24'} onClick={() => toggleSort('low_24')} />}/>
                 <TableHeader headerName={'Volume'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'volume'} onClick={() => toggleSort('volume')}/>}/>
                 <TableHeader headerName={'Market Cap'}  icon= {<SortSymbol ascending={ascending} active={sortKey == 'market_cap'}  onClick={() => toggleSort('market_cap')}/>}/>
+                
                 <TableHeader headerName={''}/>
             </thead>
             <tbody>
                 {data ? data.sort((a, b) => ascending ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey]).map((crypto) => {
                     return crypto.display && <AdvancedData
+                     crypto= {crypto}
                      key={crypto.id}
                      name={crypto.name} 
                      abr={crypto.abr}

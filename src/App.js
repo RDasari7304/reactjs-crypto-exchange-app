@@ -5,7 +5,7 @@ import Navbar from './Components/Navbar';
 import Profile from './Pages/Profile';
 import Prices from './Pages/Prices.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import BuyAndSell from './BuyAndSell.js';
+import BuyAndSell from './Pages//BuyAndSell.js';
 
 export const CryptoContext = createContext();
 
@@ -36,6 +36,7 @@ function App() {
 
           return {
             'id': index,
+            'coin_id': crypto.id,
             'name': crypto.name,
             'imgSrc': crypto.image,
             'price': `${Number(crypto.current_price).toFixed(8)}`,
@@ -48,7 +49,6 @@ function App() {
           }
         });
 
-        console.log(cryptoData)
 
         const {data: userData} = await fetchApi('http://localhost:3001/fetchUser/4');
         setUserData(userData);

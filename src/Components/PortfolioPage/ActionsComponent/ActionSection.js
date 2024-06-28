@@ -1,7 +1,7 @@
 import ActionCard from './ActionCard'; 
-import PaySomeone from '../../../Images/PortfolioPage/ActionImages/pay-someone.png'
-import TopUp from '../../../Images/PortfolioPage/ActionImages/top-up.png';
-import SharePortfolio from '../../../Images/PortfolioPage/ActionImages/share-portfolio.png';
+import PaySomeone from '../../../Images/ActionImages/pay-someone.png'
+import TopUp from '../../../Images/ActionImages/top-up.png';
+import SharePortfolio from '../../../Images/ActionImages/share-portfolio.png';
 
 export default function ActionSection(){
     return (
