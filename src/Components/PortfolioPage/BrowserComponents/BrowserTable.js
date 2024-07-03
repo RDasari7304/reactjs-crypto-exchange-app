@@ -1,7 +1,14 @@
 import TableHeader from '../../TableComponents/TableHeader';
 import SimpleData from '../../TableComponents/SimpleData';
+import { useNavigate } from 'react-router-dom';
 
 export default function BrowserTable({data, isFavoritable, isBrowser, showHeaders}){
+
+    const navigate = useNavigate();
+
+    const handleBuyAndSell = (cryptoIndex) => {
+        navigate(`/buy-sell-crypto?cryptoIndex=${cryptoIndex}`);
+    }
 
     return (
         <table className="border-collapse table-auto w-full text-sm">
@@ -37,17 +44,18 @@ export default function BrowserTable({data, isFavoritable, isBrowser, showHeader
                     }
 
                     return (
-                        <SimpleData 
-                        key={crypto.abr} 
-                        crypto={crypto.name} 
-                        abr={crypto.abr}
-                        logoSrc={crypto.imgSrc} 
-                        pair={crypto.abr + ' / USDT'} 
-                        price= {crypto.price} 
-                        change={crypto.change} 
-                        volume={crypto.volume} 
-                        customs={{favoritable: isFavoritable, isBrowser: isBrowser}}
-                        />
+                            <SimpleData 
+                            key={crypto.abr} 
+                            crypto={crypto.name} 
+                            abr={crypto.abr}
+                            logoSrc={crypto.imgSrc} 
+                            pair={crypto.abr + ' / USDT'} 
+                            price= {crypto.price} 
+                            change={crypto.change} 
+                            volume={crypto.volume} 
+                            customs={{favoritable: isFavoritable, isBrowser: isBrowser}}
+                            onClick={() => handleBuyAndSell(crypto.index)}
+                            />
                     )
                 })}
             </tbody>

@@ -1,7 +1,7 @@
 import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
 
-export default function CryptoData({crypto, abr, logoSrc, pair, price, change, volume, customs}){
+export default function CryptoData({crypto, abr, logoSrc, pair, price, change, volume, customs, onClick}){
     const isPositive = change >= 0;
     const percentChangeStyle = isPositive ? 
     {'backgroundColor': '#f1fef2', 'color': '#3DCF50'} 
@@ -10,7 +10,7 @@ export default function CryptoData({crypto, abr, logoSrc, pair, price, change, v
 
 
     return (
-        <tr className="hover:bg-gray-100 cursor-pointer">
+        <tr className="hover:bg-gray-100 cursor-pointer" onClick={() => onClick()}>
                 <td className="border-b p-4">
                     <div className="flex items-center">
                         <img src={logoSrc} alt="React Image" className={customs.isBrowser ? "max-w-8 max-h-8 mr-4" : "max-w-6 max-h-6 mr-3"} />

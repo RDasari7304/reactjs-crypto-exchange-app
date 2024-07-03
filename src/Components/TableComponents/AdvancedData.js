@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
+import { useNavigate } from "react-router-dom";
 
-export default function AdvancedData({crypto, name, abr, pair, logoSrc, price, change, volume, low_24, high_24, market_cap, isFavorited}){
+export default function AdvancedData({index, name, abr, pair, logoSrc, price, change, volume, low_24, high_24, market_cap, isFavorited}){
     const isPositive = change > 0;
+    const navigate = useNavigate();
+
+    const redirectToTrade = (cryptoIndex) => {
+        navigate(`/buy-sell-crypto?cryptoIndex=${cryptoIndex}`);
+    }
 
     const [favoritedState, setFavoritedState] = useState(isFavorited);
     const percentChangeStyle = isPositive ? 
@@ -52,7 +58,7 @@ export default function AdvancedData({crypto, name, abr, pair, logoSrc, price, c
             <td className="border-t border-b p-4" style={{'fontFamily': 'Calibri', 'fontSize': '16px'}}>{formatNumber(market_cap)}</td>
             <td className="border-t border-b p-4" style={{'fontFamily': 'Calibri', 'fontSize': '16px'}}>
 
-                    <TradeButton />
+                    <TradeButton onClick = {() => redirectToTrade(index)}/>
                 
             </td>
         </tr>

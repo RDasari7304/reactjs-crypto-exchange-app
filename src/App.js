@@ -35,7 +35,7 @@ function App() {
           totalMktCap += crypto.fully_diluted_valuation;
 
           return {
-            'id': index,
+            'index': index,
             'coin_id': crypto.id,
             'name': crypto.name,
             'imgSrc': crypto.image,

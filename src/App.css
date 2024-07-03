@@ -112,3 +112,22 @@
     color: slategrey;
     opacity: 0.25;
 }
+
+.sleek-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+}
+
+.sleek-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.sleek-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.sleek-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}

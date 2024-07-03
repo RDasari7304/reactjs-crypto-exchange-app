@@ -46,7 +46,7 @@ export default function AdvancedTable({data, setData, comparisonPair}){
             <tbody>
                 {data ? data.sort((a, b) => ascending ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey]).map((crypto) => {
                     return crypto.display && <AdvancedData
-                     crypto= {crypto}
+                     index={crypto.index}
                      key={crypto.id}
                      name={crypto.name} 
                      abr={crypto.abr}
