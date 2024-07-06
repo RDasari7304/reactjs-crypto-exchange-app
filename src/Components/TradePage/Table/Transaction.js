@@ -12,12 +12,8 @@ export default function Transaction({asset, data}){
             <td className="p-2" style={{'fontFamily': 'Calibri'}}>
                 $ {data.price}
             </td>
-            <td className="p-2" style={{'fontFamily': 'Calibri'}}>
-                {data.amount}
-            </td>
-            <td className={`p-2 ${isDeposit ? 'text-green-400' : 'text-red-400'}`} 
-                style={{'fontFamily': 'Calibri'}}>
-                {data.balance}
+            <td className={`p-2 ${isDeposit ? 'text-green-400' : 'text-red-400'}`} style={{'fontFamily': 'Calibri'}}>
+                {Number(data.amount).toFixed(2)}
             </td>
             <td className="p-2" style={{'fontFamily': 'Calibri'}}>
                 {data.date}

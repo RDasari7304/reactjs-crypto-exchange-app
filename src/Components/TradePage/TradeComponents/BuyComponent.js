@@ -13,7 +13,7 @@ export default function BuyComponent({exchangeBalance, onOrder, crypto, setShowT
     }
 
     const stripValue = (value) => {
-        return value.replace(/[^0-9]/g, "");
+        return value.replace(/[^0-9.]/g, "");
     }
 
     const handleInput = (e) => {

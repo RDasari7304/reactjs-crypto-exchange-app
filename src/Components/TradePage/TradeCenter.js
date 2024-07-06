@@ -14,7 +14,7 @@ export default function TradeCenter({pageType, height}){
     
     
     const handleOrder = (orderType, orderValue, setLoading) => {
-        const strippedValue = orderValue.replace(/[^0-9]/g, "");
+        const strippedValue = orderValue.replace(/[^0-9.]/g, "");
         const amount = orderType == "Deposit" ? (strippedValue / crypto.price) : strippedValue;
         const fiatValue = orderType == "Deposit" ? -strippedValue : strippedValue * crypto.price;
         

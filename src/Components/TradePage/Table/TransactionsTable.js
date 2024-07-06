@@ -7,17 +7,15 @@ export default function TransactionsTable({cryptos, assets}){
     return (
         <table className="border-collapse table-auto w-full text-sm mt-4">
             <colgroup>
-                <col style={{'width' : '20%'}} />
-                <col style={{'width' : '20%'}} />
-                <col style={{'width' : '20%'}} />
-                <col style={{'width' : '20%'}} />
-                <col style={{'width' : '20%'}} />
+                <col style={{'width' : '25%'}} />
+                <col style={{'width' : '25%'}} />
+                <col style={{'width' : '25%'}} />
+                <col style={{'width' : '25%'}} />
             </colgroup>
             <thead className="bg-gray-50 ">
                 <TableHeader headerName={'Asset'} padding={'py-1 px-2'} textColor="text-gray-400"/>
                 <TableHeader headerName={'Asset Price'} padding={'py-1 px-2'} textColor="text-gray-400"/>
                 <TableHeader headerName={'Amount'} padding={'py-1 px-2'} textColor="text-gray-400"/>
-                <TableHeader headerName={'Asset Balance'} padding={'py-1 px-2'} textColor="text-gray-400"/>
                 <TableHeader headerName={'Date'} padding={'py-1 px-2'} textColor="text-gray-400"/>
             </thead>
             <tbody>

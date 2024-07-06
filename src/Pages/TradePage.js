@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import TradeCenter from "../Components/TradePage/TradeCenter";
 import Tabs from "../Components/TableComponents/Tabs";
 import TransactionsTable from "../Components/TradePage/Table/TransactionsTable";
+import AllocationTable from "../Components/TradePage/Table/AllocationTable";
 
 function useQuery(){
     return new URLSearchParams(useLocation().search);
@@ -35,6 +36,7 @@ export default function Trade(){
                     <div className="bg-white w-full max-w-4xl p-5">
                         <Tabs 
                             customs={{
+                                'Balances': <AllocationTable allocations={{...userData.assets, ...{'USDT': {'amount': userData.usdt_balance}}}} cryptos={cryptos}/>,
                                 'Account Transaction History': <TransactionsTable cryptos= {cryptos} assets= {userData.assets}/>
                             }}
                         />

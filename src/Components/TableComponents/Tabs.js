@@ -20,8 +20,8 @@ export default function Tabs({customs, active}){
     }, [activeTab]);
 
     return (
-        <div>
-            <div className="relative flex  border-gray-200 max-w-sm">
+        <div className="w-full ">
+            <div className="relative flex  border-gray-200 ">
                 {tabs.map((tab, index) => {
                     return <button
                         key={index}
@@ -43,7 +43,7 @@ export default function Tabs({customs, active}){
             <div className="p-4">
                 {Object.values(customs).map((custom, index) => {
                     return (activeTab == index && 
-                            <div key={index}>
+                            <div className="w-full" key={index}>
                                 {custom}
                             </div>
                         )
