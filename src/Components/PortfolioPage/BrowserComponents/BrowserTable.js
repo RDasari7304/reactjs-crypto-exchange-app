@@ -1,5 +1,5 @@
 import TableHeader from '../../TableComponents/TableHeader';
-import SimpleData from '../../TableComponents/SimpleData';
+import SimpleCryptoData from '../../TableComponents/SimpleCryptoData';
 import { useNavigate } from 'react-router-dom';
 
 export default function BrowserTable({data, isFavoritable, isBrowser, showHeaders}){
@@ -7,7 +7,7 @@ export default function BrowserTable({data, isFavoritable, isBrowser, showHeader
     const navigate = useNavigate();
 
     const handleBuyAndSell = (cryptoIndex) => {
-        navigate(`/buy-sell-crypto?cryptoIndex=${cryptoIndex}`);
+        navigate(`/trade-crypto?cryptoIndex=${cryptoIndex}`);
     }
 
     return (
@@ -44,7 +44,7 @@ export default function BrowserTable({data, isFavoritable, isBrowser, showHeader
                     }
 
                     return (
-                            <SimpleData 
+                            <SimpleCryptoData 
                             key={crypto.abr} 
                             crypto={crypto.name} 
                             abr={crypto.abr}

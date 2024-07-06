@@ -1,4 +1,4 @@
-import AdvancedData from "../TableComponents/AdvancedData";
+import AdvancedCryptoData from "../TableComponents/AdvancedCryptoData";
 import TableHeader from "../TableComponents/TableHeader";
 import TablePagination from "../TableComponents/TablePagination";
 import { useContext, useState } from "react";
@@ -45,7 +45,7 @@ export default function AdvancedTable({data, setData, comparisonPair}){
             </thead>
             <tbody>
                 {data ? data.sort((a, b) => ascending ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey]).map((crypto) => {
-                    return crypto.display && <AdvancedData
+                    return crypto.display && <AdvancedCryptoData
                      index={crypto.index}
                      key={crypto.id}
                      name={crypto.name} 

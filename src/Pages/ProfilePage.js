@@ -3,7 +3,7 @@ import ActionSection from "../Components/PortfolioPage/ActionsComponent/ActionSe
 import { subDays } from 'date-fns';
 import Browser from "../Components/PortfolioPage/BrowserComponents/Browser";
 
-export default function Profile(){
+export default function ProfilePage(){
     const data = []
   
     for(let i = 30; i >= 0; i--){

@@ -3,12 +3,12 @@ import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
 import { useNavigate } from "react-router-dom";
 
-export default function AdvancedData({index, name, abr, pair, logoSrc, price, change, volume, low_24, high_24, market_cap, isFavorited}){
+export default function AdvancedCryptoData({index, name, abr, pair, logoSrc, price, change, volume, low_24, high_24, market_cap, isFavorited}){
     const isPositive = change > 0;
     const navigate = useNavigate();
 
     const redirectToTrade = (cryptoIndex) => {
-        navigate(`/buy-sell-crypto?cryptoIndex=${cryptoIndex}`);
+        navigate(`/trade-crypto?cryptoIndex=${cryptoIndex}`);
     }
 
     const [favoritedState, setFavoritedState] = useState(isFavorited);

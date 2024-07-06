@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
 import { fetchApi } from "../TestData/dbfunctions";
+import { formatDate } from "../TestData/services";
 
 export default function CryptoGraph({setChartLoaded, crypto, type, simple}){
     const [data, setData] = useState();
@@ -17,12 +18,8 @@ export default function CryptoGraph({setChartLoaded, crypto, type, simple}){
         const prepared_data = Object.entries(data.prices).map((data_point) => {
             const data_piece = data_point[1];
             const date = new Date(data_piece[0]);
-            const time_stamp_sections = date.toString().split(" ");
-            
-            const month = time_stamp_sections[1];
-            const day = time_stamp_sections[2];
-            const year = time_stamp_sections[3];
-            const hour = date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'});
+
+            const [month, day, year, hour] = formatDate(date);
             
             const time_stamp = `${month} ${day}, ${year} ${hour}`
             return {time_stamp: time_stamp, price: data_piece[1]};
@@ -32,7 +29,6 @@ export default function CryptoGraph({setChartLoaded, crypto, type, simple}){
     }
 
     useEffect(() => {
-        console.log(crypto);
         
         async function prepare_data(){
             await setData({
@@ -52,7 +48,6 @@ export default function CryptoGraph({setChartLoaded, crypto, type, simple}){
     }, []);
     
     function CreateGraph(data){
-        console.log(data[type]);
         if(!data[type]) return null;
         return(
             <ResponsiveContainer width="100%" height={400} >
@@ -94,7 +89,6 @@ export default function CryptoGraph({setChartLoaded, crypto, type, simple}){
     }
 
     function CustomToolTip({active, payload, label}){
-        console.log(payload);
         if(active && payload && payload.length){
             const date = label;
             const price = payload[0].value;

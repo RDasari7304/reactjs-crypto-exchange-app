@@ -1,7 +1,7 @@
 import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
 
-export default function CryptoData({crypto, abr, logoSrc, pair, price, change, volume, customs, onClick}){
+export default function SimpleCryptoData({crypto, abr, logoSrc, pair, price, change, volume, customs, onClick}){
     const isPositive = change >= 0;
     const percentChangeStyle = isPositive ? 
     {'backgroundColor': '#f1fef2', 'color': '#3DCF50'} 

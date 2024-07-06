@@ -2,10 +2,10 @@ import { useEffect, useState, createContext } from 'react';
 import {fetchApi} from './TestData/dbfunctions.js';
 import './App.css';
 import Navbar from './Components/Navbar';
-import Profile from './Pages/Profile';
-import Prices from './Pages/Prices.js';
+import PricesPage from './Pages/PricesPage.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import BuyAndSell from './Pages//BuyAndSell.js';
+import TradePage from './Pages/TradePage.js';
+import ProfilePage from './Pages/ProfilePage.js';
 
 export const CryptoContext = createContext();
 
@@ -69,9 +69,9 @@ function App() {
           <BrowserRouter>
             <Navbar />
             <Routes>
-              <Route path = '/' element= {<Profile />} />
-              <Route path = '/buy-sell-crypto' element= {<BuyAndSell />} />
-              <Route path = '/prices' element = {<Prices />} />
+              <Route path = '/' element= {<ProfilePage />} />
+              <Route path = '/trade-crypto' element= {<TradePage />} />
+              <Route path = '/prices' element = {<PricesPage />} />
             </Routes>
           </BrowserRouter>
         }

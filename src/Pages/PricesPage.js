@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { CryptoContext } from "../App";
+import { CryptoContext } from "../App.js";
 import PriceSearch from "../Components/PricesPage/PriceSearch.js";
 import Tabs from "../Components/TableComponents/Tabs.js";
 import AdvancedTable from "../Components/PricesPage/AdvancedTable.js";
 
-export default function Prices(){
+export default function PricesPage(){
     const [cryptoData, , mktStats] = useContext(CryptoContext);
     const market_cap_trillions = (mktStats.total_market_cap / Math.pow(10, 12)).toFixed(2);
 
@@ -17,7 +17,6 @@ export default function Prices(){
         setFilterableData(cryptoData.map((crypto, index) => ({...crypto, 'display': index < 20})));
         setSearchableData(cryptoData.map((crypto) => ({...crypto, 'display': false})));
         setLoading(false);
-        console.log(filterableData);
     }, []);
 
     return (

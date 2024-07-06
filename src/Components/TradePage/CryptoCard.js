@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import CryptoGraph from "../CryptoGraph";
-import { TradeContext } from "../../Pages/BuyAndSell";
+import { TradeContext } from "../../Pages/TradePage";
 
-export default function CryptoTradeCard({passHeight}){
+export default function CryptoCard({passHeight}){
     const [chartPeriod, setChartPeriod] = useState('daily');
     const [chartLoaded, setChartLoaded] = useState(false);
     const [crypto] = useContext(TradeContext);
@@ -15,7 +15,7 @@ export default function CryptoTradeCard({passHeight}){
     }, [chartLoaded]);
 
     return (
-        <div className="flex flex-col w-full bg-white p-4 justify-start max-w-5xl" ref={containerRef}>
+        <div className="flex flex-col w-full bg-white p-4" ref={containerRef}>
             <div className="flex items-center p-4">
                     <img src={crypto.imgSrc} alt="React Image" className="max-w-8 max-h-8 mr-4" />
                     <span className="text-slate-500 flex items-center" style={{'fontSize': '22px', 'fontFamily': 'Calibri'}}><p className="text-black">{crypto.abr.toUpperCase()}</p> /USDT</span>

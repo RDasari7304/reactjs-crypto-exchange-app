@@ -1,17 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { CryptoContext } from "../../App";
+import { CryptoContext } from "../../../App";
 
-export default function TradeSearch({onBack, currentCrypto, height}){
+export default function TradeSearch({tradeType, onBack, currentCrypto, height}){
     const [cryptos] = useContext(CryptoContext);
     const [filterKey, setFilterKey] = useState("");
     const [searchableCryptos, setSearchableCryptos] = useState([]);
 
     const navigateToCryptoPage = (index) => {
-        window.location.href = `/buy-sell-crypto?cryptoIndex=${index}`;
+        window.location.href = `/trade-crypto?cryptoIndex=${index}&page=${tradeType}` ;
     }
 
     useEffect(() => {
-        console.log("hello");
         const useableData = cryptos.map((crypto) => {
             const lowerName = crypto.name.toLowerCase();
             const lowerAbr = crypto.abr.toLowerCase();

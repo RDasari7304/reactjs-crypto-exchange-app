@@ -40,7 +40,8 @@ app.get('/fetchUser/:id', async (req, res) => {
         const result = await queryDB(sql);
         
         const favorites = result[0].favorites.split(',');
-        const user = {...result[0], favorites: favorites};
+        const assets = JSON.parse(result[0].assets);
+        const user = {...result[0], favorites: favorites, assets: assets};
 
         res.status(200).json(user);
     }catch(err){

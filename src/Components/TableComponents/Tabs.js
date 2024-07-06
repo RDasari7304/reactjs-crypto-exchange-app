@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
-export default function Tabs({customs}){
-    const [activeTab, setActiveTab] = useState(0);
+export default function Tabs({customs, active}){
+    const [activeTab, setActiveTab] = useState(active ? active : 0);
 
     const [underlineStyle, setUnderlineStyle] = useState({});
 
@@ -21,12 +21,12 @@ export default function Tabs({customs}){
 
     return (
         <div>
-            <div className="relative flex justify-around border-gray-200 max-w-sm">
+            <div className="relative flex  border-gray-200 max-w-sm">
                 {tabs.map((tab, index) => {
                     return <button
                         key={index}
                         ref= {el => (tabsRef.current[index] = el)}
-                        className={`py-2 px-4 focus:outline-none ${
+                        className={`py-2 px-4 mr-10 focus:outline-none ${
                             activeTab == index ?
                                 'text-gray-900' :
                                 'text-gray-600' 

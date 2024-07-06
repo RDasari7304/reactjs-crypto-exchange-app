@@ -12,7 +12,6 @@ export default function AddFavorite({onToggle, isActive, value}){
             strokeWidth={1.5} stroke={isActive ? "#f0b90b" : "#e6e8ea"} 
             className="size-7 ml-auto mr-5 cursor-pointer"
             onClick={async () => {
-                console.log("Running");
                 const updatedFavorites = isActive ? 
                                                     userData.favorites.filter((crypto) => crypto != value)
                                                     :
