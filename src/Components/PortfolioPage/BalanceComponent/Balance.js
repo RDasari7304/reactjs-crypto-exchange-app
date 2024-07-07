@@ -33,8 +33,7 @@ export default function Balance({data}){
                 </div>
             </div>
             <BalanceGraph data={data}/>
-            <div className='flex justify-center items-center w-full'>
-                <BalanceSector />
+            <div className='flex justify-center items-center w-full mt-5'>
                 <BalanceSector />
             </div>
         </div>

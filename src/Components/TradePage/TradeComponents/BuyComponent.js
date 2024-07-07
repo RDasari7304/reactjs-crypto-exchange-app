@@ -1,11 +1,10 @@
 import { useState } from "react";
 import ChangeCurrency from "./ChangeCurrency";
 
-export default function BuyComponent({exchangeBalance, onOrder, crypto, setShowTrade, setInitialIndex}){
+export default function BuyComponent({exchangeBalance, onPreview, crypto, setOrderType, setOrderValue, setShowTrade, setInitialIndex}){
     const [buyValue, setBuyValue] = useState("");
     const [overSpend, setOverSpend] = useState(false);
     const [animate, setAnimate] = useState(false);
-    const [processingOrder, setProcessingOrder] = useState(false);
 
     
     const formatTradeOrder = (value) => {
@@ -39,14 +38,15 @@ export default function BuyComponent({exchangeBalance, onOrder, crypto, setShowT
             <button 
             onClick={() => {
                 if(!overSpend){
-                    onOrder('Deposit', buyValue, setProcessingOrder);
-                    setBuyValue("");
+                    setOrderType('Deposit');
+                    setOrderValue(buyValue);
+                    onPreview();
                 }else{
                     setAnimate(true); 
                     setTimeout(() => setAnimate(false), 500);
                 }
             }}
-            disabled={processingOrder || buyValue == ""}
+            disabled={buyValue == ""}
             className="disabled:bg-gray-100 bg-yellow-500 rounded-sm p-2 mt-6 w-full" 
             style={{'fontFamily': 'Calibri'}}> Preview Order </button>
         </div>

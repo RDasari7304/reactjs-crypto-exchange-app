@@ -1,12 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import AddFavorite from "../AddFavorite";
 import TradeButton from "../TradeButton";
 
-export default function SimpleCryptoData({crypto, abr, logoSrc, pair, price, change, volume, customs, onClick}){
+export default function SimpleCryptoData({index, crypto, abr, logoSrc, pair, price, change, volume, customs, onClick}){
     const isPositive = change >= 0;
     const percentChangeStyle = isPositive ? 
     {'backgroundColor': '#f1fef2', 'color': '#3DCF50'} 
     : 
     {'backgroundColor': '#fef2f1', 'color': '#F84960'}
+    
+    const navigate = useNavigate();
+
+    navigate()
 
 
     return (
@@ -43,7 +48,7 @@ export default function SimpleCryptoData({crypto, abr, logoSrc, pair, price, cha
                         {isPositive ? '+ ' : ''} {change} %
                     </td>
                     <td className="border-b">
-                        <TradeButton />
+                        <TradeButton index={index}/>
                     </td>
                 </>
                 }

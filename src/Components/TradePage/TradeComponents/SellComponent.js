@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChangeCurrency from "./ChangeCurrency";
 
-export default function SellComponent({exchangeBalance, onSell, crypto, setShowTrade, setInitialIndex}){
+export default function SellComponent({crypto, exchangeBalance, onPreview, setOrderType, setOrderValue, setShowTrade, setInitialIndex}){
     const [sellValue, setSellValue] = useState("");
     const [overSpend, setOverSpend] = useState(false);
     const [animate, setAnimate] = useState(false);
@@ -38,8 +38,9 @@ export default function SellComponent({exchangeBalance, onSell, crypto, setShowT
             <button 
             onClick={() => {
                 if(!overSpend){
-                    onSell('Withdraw', sellValue, setProcessingOrder);
-                    setSellValue("");
+                    setOrderType('Withdraw');
+                    setOrderValue(sellValue);
+                    onPreview();
                 }else{
                     setAnimate(true); 
                     setTimeout(() => setAnimate(false), 500);

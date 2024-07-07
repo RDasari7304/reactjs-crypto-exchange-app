@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CryptoContext } from "../../../App";
 
-export default function TradeSearch({tradeType, onBack, currentCrypto, height}){
+export default function TradeSearch({tradeType, onBack, currentCrypto, height, width}){
     const [cryptos] = useContext(CryptoContext);
     const [filterKey, setFilterKey] = useState("");
     const [searchableCryptos, setSearchableCryptos] = useState([]);
@@ -24,7 +24,7 @@ export default function TradeSearch({tradeType, onBack, currentCrypto, height}){
     }, [filterKey]);
 
     return (
-        <div className="flex flex-col pb-10" style={{'height': height}}>
+        <div className="flex flex-col p-5" style={{'height': height, 'width': width}}>
             <div className="flex items-center pb-2 mb-5 border-b">
                 <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -36,7 +36,7 @@ export default function TradeSearch({tradeType, onBack, currentCrypto, height}){
                 className={`size-8 mr-2 p-1 cursor-pointer`}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
-                <p style={{'fontFamily': "Calibri"}} className="text-2xl"> Select Coin </p>
+                <p style={{'fontFamily': "Calibri"}} className="text-2xl text-slate-700"> Select Coin </p>
             </div>
             <div className="relative w-full flex justify-center">
                 <div className="relative w-full">

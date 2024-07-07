@@ -30,7 +30,7 @@ export default function Allocation({symbol, name, index, imgSrc, allocation, bal
             </td>
             <td>
                 {<div className={`${showButtons ? 'opacity-100' : 'opacity-0'} flex items-center`}>
-                    <TradeButton onClick={() => {window.location.href = `/trade-crypto?cryptoIndex=${index}`}}/>
+                    <TradeButton index={index} />
                 </div>}
             </td>
         </tr>

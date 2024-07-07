@@ -2,7 +2,6 @@ import TableHeader from "../../TableComponents/TableHeader";
 import Allocation from "./Allocation";
 import SortSymbol from '../../TableComponents/SortSymbol';
 import { useState } from "react";
-import USDT from '../../../Images/CryptoLogos/USDT.png';
 
 export default function AllocationTable({allocations, cryptos}){
     const [ascending, setAscending] = useState(false);

@@ -46,6 +46,7 @@ export default function BrowserTable({data, isFavoritable, isBrowser, showHeader
                     return (
                             <SimpleCryptoData 
                             key={crypto.abr} 
+                            index={crypto.index}
                             crypto={crypto.name} 
                             abr={crypto.abr}
                             logoSrc={crypto.imgSrc} 
