@@ -51,7 +51,17 @@ function App() {
 
 
         const {data: userData} = await fetchApi('http://localhost:3001/fetchUser/4');
-        setUserData(userData);
+        const allocatedCryptos = cryptoData.filter((crypto) => {
+          const cryptoAbrUpperCase = crypto.abr.toUpperCase();
+          return Object.keys(userData.assets).includes(cryptoAbrUpperCase) || crypto.abr == 'usdt';
+        });
+        
+        const formattedAllocations = allocatedCryptos.reduce((acc, crypto) => {
+          acc[crypto.abr.toUpperCase()] = crypto;
+          return acc;
+        }, {});
+
+        setUserData({...userData, 'allocated_cryptos': formattedAllocations});
         setCryptos(cryptoData);
         setMktStats({total_market_cap: totalMktCap, btc_dominance: (btc_dominance / totalMktCap) * 100 });
         setLoading(false);

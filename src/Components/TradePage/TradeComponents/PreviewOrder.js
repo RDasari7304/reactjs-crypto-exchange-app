@@ -11,7 +11,7 @@ export default function PreviewOrder({orderValue, orderType, crypto, height, wid
     const purchaseDate = `${month} ${day} ${year}`;
 
     return (
-        <div className="flex flex-col p-5" style={{'height': height, 'width': width}}>
+        <div className="flex flex-col p-4" style={{'height': height, 'width': width}}>
             <div className="flex items-center pb-2 border-b">
                 <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -46,7 +46,7 @@ export default function PreviewOrder({orderValue, orderType, crypto, height, wid
                     <p>{isDeposit ? 'Purchase' : 'Sell'} date: <span className="font-semibold text-slate-700">{purchaseDate}</span></p>
                 </div>
             </div>
-            <button onClick= {() => onConfirm()} className='w-full p-1 bg-yellow-500 rounded-sm' style={{'fontFamily': 'Calibri'}}>
+            <button onClick= {() => onConfirm()} className='w-full p-2 bg-yellow-500 rounded-sm' style={{'fontFamily': 'Calibri'}}>
                 Place Order
             </button>
         </div>

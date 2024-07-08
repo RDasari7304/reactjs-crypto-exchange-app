@@ -1,9 +1,10 @@
 import ToggleEye from './ToggleEye.js';
 import BalanceGraph from './BalanceGraph.js';
 import { useState } from 'react';
-import BalanceSector from './BalanceSector.js';
+import USDTBalanceSector from './USDTBalanceSector.js';
+import CryptoBalanceSector from './CryptoBalanceSector.js';
 
-export default function Balance({data}){
+export default function Balance({accountVal, data, userData}){
     const [showBalance, setShowBalance] = useState(true);
 
     return(
@@ -14,9 +15,9 @@ export default function Balance({data}){
                         <span className='text-xl font-extralight balance-title'> Balance </span>
                         <div className='mt-4 flex justify-center items-center'>
                             
-                            <span className={`${showBalance? 'show-balance-dollar mt-1' : 'hide-balance-dollar'}`}>$</span>
+                            <span className={`${showBalance? 'show-balance-dollar mt-1' : 'hide-balance-dollar'}`}>$ </span>
                             {showBalance ? 
-                                <span className='show-balance mr-5'>{Number(data[data.length - 1].value.toFixed(2)).toLocaleString('en', {minimumFractionDigits: 2, minimumFractionDigits: 2})}</span>
+                                <span className='show-balance mr-5'> {Number(accountVal).toLocaleString('en')}</span>
                                 :
                                 <span className='hide-balance ml-1 mr-5'>........</span>
                             }
@@ -34,7 +35,8 @@ export default function Balance({data}){
             </div>
             <BalanceGraph data={data}/>
             <div className='flex justify-center items-center w-full mt-5'>
-                <BalanceSector />
+                <CryptoBalanceSector accountVal={accountVal} userData={userData}/>
+                <USDTBalanceSector USDTBalance={userData.usdt_balance}/>
             </div>
         </div>
     );

@@ -1,42 +1,20 @@
 import { useEffect, useState } from "react";
 import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
-import { fetchApi } from "../TestData/dbfunctions";
-import { formatDate } from "../TestData/services";
+import { fetchCryptoHistory } from "../TestData/services";
 
 export default function CryptoGraph({setChartLoaded, crypto, type, simple}){
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
 
-    async function fetch(days){
-        const result = await fetchApi('http://localhost:3001/fetchAPI', {
-            params: {vs_currency: 'USD', days: days, precision: 6},
-            endpoint: `https://api.coingecko.com/api/v3/coins/${crypto.coin_id.toLowerCase()}/market_chart`,
-            headers: {'x-cg-demo-api-key': 'CG-o1pXq1qe5ANQmCa4dd5yQZza', 'Accept': 'application/json'}
-        });
-
-        const {data} = result;
-        const prepared_data = Object.entries(data.prices).map((data_point) => {
-            const data_piece = data_point[1];
-            const date = new Date(data_piece[0]);
-
-            const [month, day, year, hour] = formatDate(date);
-            
-            const time_stamp = `${month} ${day}, ${year} ${hour}`
-            return {time_stamp: time_stamp, price: data_piece[1]};
-        });
-        
-        return prepared_data;
-    }
-
     useEffect(() => {
         
         async function prepare_data(){
             await setData({
-                'hourly': await fetch(1/24),
-                'daily': await fetch(1),
-                'weekly': await fetch(7),
-                'monthly': await fetch(28),
-                'yearly': await fetch(365)
+                'hourly': await fetchCryptoHistory(crypto, 1/24),
+                'daily': await fetchCryptoHistory(crypto, 1),
+                'weekly': await fetchCryptoHistory(crypto, 7),
+                'monthly': await fetchCryptoHistory(crypto, 28),
+                'yearly': await fetchCryptoHistory(crypto, 365)
             });
 
             setLoading(false);

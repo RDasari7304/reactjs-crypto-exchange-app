@@ -8,12 +8,7 @@ export default function SimpleCryptoData({index, crypto, abr, logoSrc, pair, pri
     {'backgroundColor': '#f1fef2', 'color': '#3DCF50'} 
     : 
     {'backgroundColor': '#fef2f1', 'color': '#F84960'}
-    
-    const navigate = useNavigate();
-
-    navigate()
-
-
+  
     return (
         <tr className="hover:bg-gray-100 cursor-pointer" onClick={() => onClick()}>
                 <td className="border-b p-4">

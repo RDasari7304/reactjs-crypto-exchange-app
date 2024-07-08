@@ -17,11 +17,22 @@ export default function TradeCenter({ pageType }) {
   const [orderType, setOrderType] = useState("Deposit");
   const containerRef = useRef(null);
 
+  const [buyInputValue, setBuyInputValue] = useState("");
+  const [sellInputValue, setSellInputValue] = useState("");
+
+  const clearFields = () => {
+    setOrderValue(0);
+    setBuyInputValue("");
+    setSellInputValue("");
+  }
+
   const handleOrder = () => {
     setShowConfirmation(false);
     const strippedValue = orderValue.replace(/[^0-9.]/g, "");
-    const amount = orderType === "Deposit" ? strippedValue / crypto.price : strippedValue;
+    const amount = orderType === "Deposit" ? strippedValue / crypto.price : Number(strippedValue);
     const fiatValue = orderType === "Deposit" ? -strippedValue : strippedValue * crypto.price;
+
+    console.log(amount);
 
     const [month, day, year, hour] = formatDate(new Date());
 
@@ -45,9 +56,13 @@ export default function TradeCenter({ pageType }) {
     const updatedAsset = { amount: newBalance, transactions: transactions };
     const updatedAssets = { ...userData.assets, [crypto.abr.toUpperCase()]: updatedAsset };
     const usdtBalance = userData.usdt_balance + fiatValue;
+    
+    const formattedAllocations = {...userData.allocated_cryptos, ...{[crypto.abr.toUpperCase()]: crypto}}
+
     updateUserData(userData.pk_users, { assets: JSON.stringify(updatedAssets), usdt_balance: usdtBalance });
-    setUserData({ ...userData, assets: updatedAssets, usdt_balance: usdtBalance });
+    setUserData({ ...userData, assets: updatedAssets, usdt_balance: usdtBalance, allocated_cryptos: formattedAllocations});
     alert("Order successful!");
+    clearFields();
   };
 
   return (
@@ -65,6 +80,8 @@ export default function TradeCenter({ pageType }) {
                   setOrderValue={setOrderValue}
                   setShowTrade={setShowTrade}
                   setInitialIndex={setInitialIndex}
+                  value={buyInputValue}
+                  setValue={setBuyInputValue}
                 />
               ),
               Sell: (
@@ -80,6 +97,8 @@ export default function TradeCenter({ pageType }) {
                   setOrderValue={setOrderValue}
                   setShowTrade={setShowTrade}
                   setInitialIndex={setInitialIndex}
+                  value={sellInputValue}
+                  setValue={setSellInputValue}
                 />
               ),
             }}
@@ -88,8 +107,10 @@ export default function TradeCenter({ pageType }) {
         </div>
       ) : (
         <TradeSearch
-          tradeType={initialIndex === 0 ? "buy" : "sell"}
-          onBack={() => setShowTrade(true)}
+          tradeType={initialIndex == 0 ? "buy" : "sell"}
+          onBack={() => {
+            setShowTrade(true);
+          }}
           currentCrypto={crypto}
           height={containerRef.current.clientHeight}
           width={containerRef.current.clientWidth}
@@ -104,7 +125,10 @@ export default function TradeCenter({ pageType }) {
           height={containerRef.current.clientHeight}
           width={containerRef.current.clientWidth}
           onConfirm={handleOrder}
-          onBack={() => setShowConfirmation(false)}
+          onBack={() => {
+            setShowConfirmation(false);
+            setInitialIndex(orderType == 'Deposit' ? 0 : 1);
+          }}
         />
       )}
     </div>

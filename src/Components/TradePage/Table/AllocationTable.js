@@ -5,10 +5,7 @@ import { useState } from "react";
 
 export default function AllocationTable({allocations, cryptos}){
     const [ascending, setAscending] = useState(false);
-    const allocatedCryptos = cryptos.filter((crypto) => Object.keys(allocations).includes(crypto.abr.toUpperCase())).reduce((acc, crypto) => {
-        acc[crypto.abr.toUpperCase()] = crypto;
-        return acc;
-    }, {});
+
 
     const totalAssets = Object.entries(allocations).reduce((acc, [key,value]) => {
         return acc + value.amount; 
@@ -40,15 +37,17 @@ export default function AllocationTable({allocations, cryptos}){
                                                                                      value.amount - value2.amount  
                                                                                      : value2.amount - value.amount).map(([key, value]) => 
                     {
-                        const allocatedCrypto = allocatedCryptos[key];
+                        const crypto = cryptos[key];
+                        console.log(key);
+                        console.log(crypto);
                         return <Allocation 
                             symbol={key}
-                            name= {allocatedCrypto.name}
-                            index= {allocatedCrypto.index}
-                            imgSrc={allocatedCrypto.imgSrc}
+                            name= {crypto.name}
+                            index= {crypto.index}
+                            imgSrc={crypto.imgSrc}
                             allocation={parseFloat(((value.amount / totalAssets) * 100).toFixed(2))}
                             balance={value.amount.toFixed(2)}
-                            fiat={allocatedCrypto.price}
+                            fiat={crypto.price}
                         />
                     })
                 }

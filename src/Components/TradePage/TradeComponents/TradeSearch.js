@@ -24,7 +24,7 @@ export default function TradeSearch({tradeType, onBack, currentCrypto, height, w
     }, [filterKey]);
 
     return (
-        <div className="flex flex-col p-5" style={{'height': height, 'width': width}}>
+        <div className="flex flex-col " style={{'height': height, 'width': width}}>
             <div className="flex items-center pb-2 mb-5 border-b">
                 <svg 
                 xmlns="http://www.w3.org/2000/svg" 

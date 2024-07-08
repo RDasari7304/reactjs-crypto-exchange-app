@@ -1,8 +1,7 @@
 import { useState } from "react";
 import ChangeCurrency from "./ChangeCurrency";
 
-export default function SellComponent({crypto, exchangeBalance, onPreview, setOrderType, setOrderValue, setShowTrade, setInitialIndex}){
-    const [sellValue, setSellValue] = useState("");
+export default function SellComponent({crypto, exchangeBalance, onPreview, setOrderType, setOrderValue, setShowTrade, setInitialIndex, value, setValue}){
     const [overSpend, setOverSpend] = useState(false);
     const [animate, setAnimate] = useState(false);
     const [processingOrder, setProcessingOrder] = useState(false);
@@ -18,7 +17,7 @@ export default function SellComponent({crypto, exchangeBalance, onPreview, setOr
     const handleInput = (e) => {
         const value = stripValue(e.target.value);
         setOverSpend(value > exchangeBalance);
-        setSellValue(formatTradeOrder(value));
+        setValue(formatTradeOrder(value));
     }
 
     return (
@@ -27,26 +26,26 @@ export default function SellComponent({crypto, exchangeBalance, onPreview, setOr
              type='text'
              className={`focus:outline-none text-center max-w-full p-5 text-8xl`}
              placeholder="0"
-             value={sellValue}
+             value={value}
              onChange={(e) => handleInput(e)}
              />
 
             <p className="text-2xl"> {crypto.abr.toUpperCase()} </p>
             {overSpend && <p className={`text-red-300 p-2 ${animate && 'animate-bounce'}`}> Your sell order exceeds your available {crypto.abr.toUpperCase()} balance </p>}
-            <ChangeCurrency balance={exchangeBalance} value={sellValue} exchangeType= 'CryptoToUSDT' setShowTrade= {setShowTrade} setInitialIndex= {setInitialIndex} crypto={crypto}/>
+            <ChangeCurrency balance={exchangeBalance} value={value} exchangeType= 'CryptoToUSDT' setShowTrade= {setShowTrade} setInitialIndex= {setInitialIndex} crypto={crypto}/>
             
             <button 
             onClick={() => {
                 if(!overSpend){
                     setOrderType('Withdraw');
-                    setOrderValue(sellValue);
+                    setOrderValue(value);
                     onPreview();
                 }else{
                     setAnimate(true); 
                     setTimeout(() => setAnimate(false), 500);
                 }
             }}
-            disabled={processingOrder || sellValue == ""}
+            disabled={processingOrder || value == ""}
             className="disabled:bg-gray-100 bg-yellow-500 rounded-sm p-2 mt-6 w-full" 
             style={{'fontFamily': 'Calibri'}}> Preview Order </button>
         </div>

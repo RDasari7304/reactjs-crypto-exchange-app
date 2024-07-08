@@ -36,7 +36,8 @@ export default function Trade(){
                     <div className="bg-white w-full max-w-4xl p-5">
                         <Tabs 
                             customs={{
-                                'Balances': <AllocationTable allocations={{...userData.assets, ...{'USDT': {'amount': userData.usdt_balance}}}} cryptos={cryptos}/>,
+                                'Balances': <AllocationTable allocations={{...userData.assets, ...{'USDT': {'amount': userData.usdt_balance}}}} 
+                                                             cryptos={userData.allocated_cryptos}/>,
                                 'Account Transaction History': <TransactionsTable cryptos= {cryptos} assets= {userData.assets}/>
                             }}
                         />
