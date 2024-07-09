@@ -13,7 +13,7 @@ export default function Transaction({asset, data}){
                 $ {data.price}
             </td>
             <td className={`p-2 ${isDeposit ? 'text-green-400' : 'text-red-400'}`} style={{'fontFamily': 'Calibri'}}>
-                {Number(data.amount).toFixed(2)}
+                {Number(data.amount.toFixed(2)).toLocaleString('en')}
             </td>
             <td className="p-2" style={{'fontFamily': 'Calibri'}}>
                 {data.date}
