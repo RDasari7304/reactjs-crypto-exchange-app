@@ -35,9 +35,9 @@ export default function ProfilePage(){
         const endingDate = new Date();
         const newData = [];
         let lastVal = 0;
-
         
-        for (let date = startingDate; date < endingDate; date.setHours(startingDate.getHours() + 1)){
+        
+        for (let date = startingDate; date < endingDate; date.setHours(date.getHours() + 1)){
             const dateKey = formatDateKey(date);
 
             const transactionsToDate = filterTransactionsToDate(transactions, date, tracked_transactions);
@@ -144,9 +144,9 @@ export default function ProfilePage(){
     useEffect(() => {balanceHistory()}, []);
 
     return(
-        <div className="p-10 w-full ml-auto mr-auto">
+        <div className="flex-col justify-center items-center p-10 w-full h-full ">
             {loading ?
-                <p> Loading </p>
+                <div className="border-gray-300 h-20 w-20 m-auto animate-spin rounded-full border-8 border-t-blue-600"/> 
             :
                 <>
                     <Balance accountVal={accountVal.toFixed(2)} data={data} userData={userData}/>

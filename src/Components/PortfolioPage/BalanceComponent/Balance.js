@@ -10,8 +10,8 @@ export default function Balance({accountVal, data, userData}){
     return(
         <div className="bg-white max-w-7xl w-full p-6 ml-auto mr-auto portfolio-cards">
             <div>
-                <div className='flex p-4'>
-                    <div className='flex flex-col'>
+                <div className='flex p-5 '>
+                    <div className='flex flex-col '>
                         <span className='text-xl font-extralight balance-title'> Balance </span>
                         <div className='mt-4 flex justify-center items-center'>
                             
@@ -26,9 +26,6 @@ export default function Balance({accountVal, data, userData}){
                             
                             
                         </div>
-                    </div>
-                    <div className='ml-auto'>
-                        <button className='px-4 py-1 font-sans button-border mr-1 hover:ring-yellow-500 hover:border-yellow-500' style= {{'fontFamily': 'Calibri', 'fontSize': '16px'}}>Deposit</button>
                     </div>
                 </div>
             </div>

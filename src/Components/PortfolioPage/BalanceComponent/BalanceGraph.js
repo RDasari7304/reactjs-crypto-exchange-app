@@ -34,6 +34,7 @@ export default function BalanceGraph({data}){
                     interval={Math.ceil(data.length / 7)}
                     />
 
+
                     <Tooltip content={<CustomToolTip />}/>
                     <CartesianGrid opacity={0.25} vertical={false}/>
                 </AreaChart>

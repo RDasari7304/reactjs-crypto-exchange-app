@@ -89,7 +89,9 @@ export default function CryptoGraph({setChartLoaded, crypto, type, simple}){
 
     return (
             loading ?
-                <div className="border-gray-300 m-auto h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" /> 
+                <div className="flex items-center justify-center" style={{'height': '400px'}}>
+                    <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600"/> 
+                </div>
                 :
                 (CreateGraph(data))
         
