@@ -19,8 +19,20 @@ This application leverages modern web technologies to deliver a seamless crypto 
   - Allows users to simulate trading in a risk-free environment.
   - Aims to educate and familiarize users with crypto trading dynamics.
 
-## Features
+## Pages
 
+### Profile Page
+![Profile Page](https://i.ibb.co/9ZF2rjJ/Profile-Page.png)
+
+### Trading Page
+![Trading Page](https://i.ibb.co/8KcL5bf/Trading-Page.png)
+
+### Prices Page
+![Prices Page](https://i.ibb.co/Pt19CP8/Prices-Page.png)
+
+
+
+## Features
 ### Crypto Trading Simulation
 
 | Feature                                | Description                                                       |
