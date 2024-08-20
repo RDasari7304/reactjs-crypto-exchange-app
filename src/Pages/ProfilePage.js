@@ -79,7 +79,8 @@ export default function ProfilePage(){
 
     const fetchCryptoHistories = async (allocated_cryptos) => {
         return Promise.all(Object.entries(allocated_cryptos).map(async ([key, crypto]) => {
-            return {[key]: (await fetchCryptoHistory(crypto, 28))};
+            const days = Math.ceil((new Date() - new Date(userData.registration_date)) / (1000 * 60 * 60 * 24));
+            return {[key]: (await fetchCryptoHistory(crypto, days))};
         }));
     }
 
@@ -113,7 +114,7 @@ export default function ProfilePage(){
     }
 
     const calculateCryptoDifferentials = (transactionsToDate) => {
-        return transactionsToDate.reduce((acc, {type, amount, crypto, price}) => {
+        return transactionsToDate.reduce((acc, {type, amount, crypto}) => {
             const sign = type == 'Deposit' ? 1 : -1;
             acc[crypto] = (acc[crypto] || 0) + amount * sign;
             return acc;
@@ -128,7 +129,10 @@ export default function ProfilePage(){
     }
 
     const calculateCryptoValue = (allocated_cryptos, formattedCryptoHistories, dateKey) => {
+        console.log(`date: ${dateKey}`);
         return Object.entries(allocated_cryptos).reduce((acc, [key, value]) => {
+            console.log(key);
+            console.log(formattedCryptoHistories);
             const price = formattedCryptoHistories[key][dateKey];
             return acc + price * value;
         }, 0);

@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const axios = require('axios');
-const { sq } = require('date-fns/locale');
 const app = express();
 const port = 3001;
 
